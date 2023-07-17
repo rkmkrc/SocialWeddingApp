@@ -8,8 +8,8 @@
 import Foundation
 
 struct TestModels {
-    static var groom = Groom(name: "Ali", surname: "Yılmaz", image: "groom")
-    static var bride = Bride(name: "Fatma", surname: "Yılar", image: "bride")
-    static var wedding = Wedding(id: 1, groom: groom, bride: bride, title: "Ali & Fatma", date: "01.01.2001", location: "Istanbul", welcomeMessage: "Sizleri aramızda gördüğümüz için çok mutluyuz.")
+    static var groom = Groom(name: "John", surname: "Brown", image: "groom")
+    static var bride = Bride(name: "Emma", surname: "Watson", image: "bride")
+    static var wedding = Wedding(id: 1, groom: groom, bride: bride, date: "01.01.2001", location: "Istanbul", welcomeMessage: "Sizleri aramızda gördüğümüz için çok mutluyuz. Sizleri aramızda gördüğümüz için çok mutluyuz. Sizleri aramızda gördüğümüz için çok mutluyuz. ")
 }
 

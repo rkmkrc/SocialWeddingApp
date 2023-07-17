@@ -8,17 +8,13 @@
 import SwiftUI
 import CoreData
 
-
-
-struct ContentView: View {
+struct IntroductionPage: View {
     var groom = TestModels.groom
     var bride = TestModels.bride
     
     var body: some View {
         VStack(alignment: .center) {
-            Text("Ali & Fatma")
-                .font(.largeTitle)
-                .fontWeight(.semibold).padding(10)
+            SlideWith3DYRotation(title: TestModels.wedding.title)
             HStack {
                 VStack {
                     Image(groom.image)
@@ -29,7 +25,7 @@ struct ContentView: View {
                             Circle()
                                 .stroke(Color.gray, lineWidth: 1)
                         )
-                    .padding(10)
+                        .padding(Constants.imagePadding)
                     Text(groom.name).font(.title3).fontWeight(.light)
                 }
                 VStack {
@@ -41,23 +37,22 @@ struct ContentView: View {
                             Circle()
                                 .stroke(Color.gray, lineWidth: 1)
                         )
-                    .padding(10)
+                        .padding(Constants.imagePadding)
                     Text(bride.name).font(.title3).fontWeight(.light).lineLimit(2)
                 }
             }
             Spacer()
-            Text(TestModels.wedding.date).font(.title2).fontWeight(.light).padding(10)
+            Text(TestModels.wedding.date).font(.title2).fontWeight(.light).padding(Constants.textPadding)
             Text(TestModels.wedding.location).font(.title3).fontWeight(.light)
             Spacer()
-            Text(TestModels.wedding.welcomeMessage).font(.title3).fontWeight(.light).multilineTextAlignment(.center).padding(20)
+            Text(TestModels.wedding.welcomeMessage).font(.title3).fontWeight(.light).multilineTextAlignment(.center).padding(Constants.textPadding)
             Spacer()
-        }
+        }.background(AnimatedBackground(colorSet: 0).ignoresSafeArea().blur(radius: 190))
     }
-
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct IntroductionPage_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        IntroductionPage().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

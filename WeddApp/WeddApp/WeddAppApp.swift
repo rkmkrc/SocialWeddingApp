@@ -13,7 +13,7 @@ struct WeddAppApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            IntroductionPage()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

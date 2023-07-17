@@ -31,11 +31,26 @@ struct Wedding {
     let id: Int
     let groom: Groom
     let bride: Bride
-    let title: String
     let date: String
     let location: String
     let welcomeMessage: String
+    
+    var title: String {
+        
+
+        return "\(groom.name) \u{2764} \(bride.name)"
+    }
+    
+    init(id: Int, groom: Groom, bride: Bride, date: String, location: String, welcomeMessage: String) {
+        self.id = id
+        self.groom = groom
+        self.bride = bride
+        self.date = date
+        self.location = location
+        self.welcomeMessage = welcomeMessage
+    }
 }
+
 protocol Person {
     var name: String?{get}
     var surname: String?{get}

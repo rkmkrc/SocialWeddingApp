@@ -10,4 +10,6 @@ import Foundation
 struct Constants {
     static let placeholderGroomImage = ""
     static let placeholderBrideImage = ""
+    static let textPadding = 10.0
+    static let imagePadding = 20.0
 }
