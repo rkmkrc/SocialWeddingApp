@@ -19,19 +19,19 @@ This project is being written in SwiftUI.
   <table>
   <tr>
     <td>
-      <img src="https://github.com/rkmkrc/SocialWeddingApp/assets/42948198/19200497-13c1-4a76-b7e5-a310c18734f9" <img width="282" alt="ss1">
+      <img width="282" alt="Screenshot 2023-07-19 at 00 16 06" src="https://github.com/rkmkrc/SocialWeddingApp/assets/42948198/65360f23-dff1-4ea2-ac96-ccafaae0d8a4">
     </td>
     <td>
-      <img src="https://github.com/rkmkrc/SocialWeddingApp/assets/42948198/bd9cf26a-7db0-4db9-a1ae-9b75c3f9b77b" <img width="282" alt="ss2">
+      <img width="282" alt="Screenshot 2023-07-19 at 01 02 03" src="https://github.com/rkmkrc/SocialWeddingApp/assets/42948198/e6d47066-a470-412d-aab2-9903a67c2c62">
     </td>
     <td>
-      <img src="https://github.com/rkmkrc/SocialWeddingApp/assets/42948198/61f62a18-3093-49d9-b70e-dfa286a843b5" <img width="282" alt="ss3">
+      <img width="282" alt="Screenshot 2023-07-19 at 01 02 15" src="https://github.com/rkmkrc/SocialWeddingApp/assets/42948198/a7a958a9-c3e9-4cc2-8249-10bba1341522">
     </td>
     <td>
-      <img src="https://github.com/rkmkrc/SocialWeddingApp/assets/42948198/34bc8e34-92c5-4c0f-84b8-93dd942ca3f4" <img width="282" alt="ss4"> 
+      <img width="282" alt="Screenshot 2023-07-19 at 01 02 43" src="https://github.com/rkmkrc/SocialWeddingApp/assets/42948198/043b8528-883a-4896-ad47-06aee42ec399">
     </td>
     <td>
-      <img src="https://github.com/rkmkrc/SocialWeddingApp/assets/42948198/971129c4-bef3-474e-a682-1a0a462f51c9" <img width="282" alt="ss5">
+      <img width="282" alt="Screenshot 2023-07-19 at 01 02 59" src="https://github.com/rkmkrc/SocialWeddingApp/assets/42948198/5abc7353-4aeb-4bf2-8b29-87657bd7181b">
     </td>
   </tr>
 </table>
