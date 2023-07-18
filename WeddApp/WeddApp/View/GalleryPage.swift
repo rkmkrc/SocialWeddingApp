@@ -13,17 +13,7 @@ struct Photo: Identifiable {
 }
 
 struct GalleryPage: View {
-    let photos: [Photo] = [
-        Photo(name: "groom"),
-        Photo(name: "bride"),
-        Photo(name: "p1"),
-        Photo(name: "p2"),
-        Photo(name: "p3"),
-        Photo(name: "p4"),
-        Photo(name: "p5"),
-        Photo(name: "groom")
-    ]
-    
+    let photos: [Photo] = Constants.album
     let gridItems = [
         GridItem(.flexible()),
         GridItem(.flexible()),

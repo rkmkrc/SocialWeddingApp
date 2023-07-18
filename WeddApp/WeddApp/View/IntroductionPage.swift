@@ -14,7 +14,7 @@ struct IntroductionPage: View {
     
     var body: some View {
         VStack(alignment: .center) {
-            SlideWith3DYRotation(title: TestModels.wedding.title)
+            AnimatedText(title: TestModels.wedding.title)
             HStack {
                 VStack {
                     Image(groom.image)
@@ -42,10 +42,10 @@ struct IntroductionPage: View {
                 }
             }
             Spacer()
-            Text(TestModels.wedding.date).font(.title2).fontWeight(.light).padding(Constants.textPadding)
+            Text(TestModels.wedding.date).font(.title2).fontWeight(.regular).padding(Constants.textPadding)
             Text(TestModels.wedding.location).font(.title3).fontWeight(.light)
             Spacer()
-            Text(TestModels.wedding.welcomeMessage).font(.title3).fontWeight(.light).multilineTextAlignment(.center).padding(Constants.textPadding)
+            Text(TestModels.wedding.welcomeMessage).font(.title3).fontWeight(.regular).multilineTextAlignment(.center).padding(Constants.textPadding)
             Spacer()
         }.background(AnimatedBackground(colorSet: 0).ignoresSafeArea().blur(radius: 190))
     }

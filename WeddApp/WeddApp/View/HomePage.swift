@@ -13,13 +13,13 @@ struct HomePage: View {
         TabView {
             IntroductionPage()
             GalleryPage()
+            StoryPage()
         }
         .ignoresSafeArea()
         .tabViewStyle(PageTabViewStyle())
         .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .interactive))
     }
 }
-
 
 struct HomePage_Previews: PreviewProvider {
     static var previews: some View {

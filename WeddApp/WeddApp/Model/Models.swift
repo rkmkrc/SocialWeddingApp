@@ -34,20 +34,21 @@ struct Wedding {
     let date: String
     let location: String
     let welcomeMessage: String
-    
+    let album: [Photo]
     var title: String {
         
 
         return "\(groom.name) \u{2764} \(bride.name)"
     }
     
-    init(id: Int, groom: Groom, bride: Bride, date: String, location: String, welcomeMessage: String) {
+    init(id: Int, groom: Groom, bride: Bride, date: String, location: String, welcomeMessage: String, album: [Photo]) {
         self.id = id
         self.groom = groom
         self.bride = bride
         self.date = date
         self.location = location
         self.welcomeMessage = welcomeMessage
+        self.album = album
     }
 }
 

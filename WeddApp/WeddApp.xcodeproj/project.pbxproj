@@ -22,6 +22,14 @@
 		7D3056072A59C0C600AA761B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3056062A59C0C600AA761B /* Constants.swift */; };
 		7D30560A2A5AD2A700AA761B /* GalleryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3056092A5AD2A700AA761B /* GalleryPage.swift */; };
 		7D30560E2A5AD8FD00AA761B /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D30560D2A5AD8FD00AA761B /* HomePage.swift */; };
+		7D90F8522A66D248006A6FF6 /* StoryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D90F8512A66D248006A6FF6 /* StoryPage.swift */; };
+		7D90F8552A672916006A6FF6 /* MessageCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D90F8542A672916006A6FF6 /* MessageCard.swift */; };
+		7D90F8572A67292D006A6FF6 /* StoryCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D90F8562A67292D006A6FF6 /* StoryCircle.swift */; };
+		7D90F8592A672985006A6FF6 /* AnimatedBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D90F8582A672985006A6FF6 /* AnimatedBackground.swift */; };
+		7D90F85B2A6729C7006A6FF6 /* AnimatedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D90F85A2A6729C7006A6FF6 /* AnimatedText.swift */; };
+		7D90F85D2A673092006A6FF6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7D90F85C2A673092006A6FF6 /* GoogleService-Info.plist */; };
+		7D90F85F2A673103006A6FF6 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D90F85E2A673103006A6FF6 /* Authentication.swift */; };
+		7D90F8612A673119006A6FF6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D90F8602A673119006A6FF6 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +68,14 @@
 		7D3056062A59C0C600AA761B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7D3056092A5AD2A700AA761B /* GalleryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryPage.swift; sourceTree = "<group>"; };
 		7D30560D2A5AD8FD00AA761B /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
+		7D90F8512A66D248006A6FF6 /* StoryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryPage.swift; sourceTree = "<group>"; };
+		7D90F8542A672916006A6FF6 /* MessageCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCard.swift; sourceTree = "<group>"; };
+		7D90F8562A67292D006A6FF6 /* StoryCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCircle.swift; sourceTree = "<group>"; };
+		7D90F8582A672985006A6FF6 /* AnimatedBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedBackground.swift; sourceTree = "<group>"; };
+		7D90F85A2A6729C7006A6FF6 /* AnimatedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedText.swift; sourceTree = "<group>"; };
+		7D90F85C2A673092006A6FF6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7D90F85E2A673103006A6FF6 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
+		7D90F8602A673119006A6FF6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +126,7 @@
 		7D3055CE2A599F3B00AA761B /* WeddApp */ = {
 			isa = PBXGroup;
 			children = (
+				7D90F85C2A673092006A6FF6 /* GoogleService-Info.plist */,
 				7D3056082A5AD28500AA761B /* View */,
 				7D3056032A59C01E00AA761B /* Utils */,
 				7D3055FE2A59BD7800AA761B /* Model */,
@@ -152,6 +169,8 @@
 			children = (
 				7D3055FF2A59BD9C00AA761B /* Models.swift */,
 				7D3056012A59BF2300AA761B /* TestModels.swift */,
+				7D90F85E2A673103006A6FF6 /* Authentication.swift */,
+				7D90F8602A673119006A6FF6 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -159,6 +178,7 @@
 		7D3056032A59C01E00AA761B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				7D90F8532A6728EA006A6FF6 /* UI Components */,
 				7D3056042A59C02D00AA761B /* Utilities.swift */,
 				7D3056062A59C0C600AA761B /* Constants.swift */,
 			);
@@ -171,8 +191,20 @@
 				7D3055D12A599F3B00AA761B /* IntroductionPage.swift */,
 				7D3056092A5AD2A700AA761B /* GalleryPage.swift */,
 				7D30560D2A5AD8FD00AA761B /* HomePage.swift */,
+				7D90F8512A66D248006A6FF6 /* StoryPage.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		7D90F8532A6728EA006A6FF6 /* UI Components */ = {
+			isa = PBXGroup;
+			children = (
+				7D90F8542A672916006A6FF6 /* MessageCard.swift */,
+				7D90F8562A67292D006A6FF6 /* StoryCircle.swift */,
+				7D90F8582A672985006A6FF6 /* AnimatedBackground.swift */,
+				7D90F85A2A6729C7006A6FF6 /* AnimatedText.swift */,
+			);
+			path = "UI Components";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,6 +312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D3055D72A599F3B00AA761B /* Preview Assets.xcassets in Resources */,
+				7D90F85D2A673092006A6FF6 /* GoogleService-Info.plist in Resources */,
 				7D3055D42A599F3B00AA761B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,11 +339,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D3055D92A599F3B00AA761B /* Persistence.swift in Sources */,
+				7D90F85B2A6729C7006A6FF6 /* AnimatedText.swift in Sources */,
+				7D90F85F2A673103006A6FF6 /* Authentication.swift in Sources */,
 				7D3055DC2A599F3B00AA761B /* WeddApp.xcdatamodeld in Sources */,
+				7D90F8522A66D248006A6FF6 /* StoryPage.swift in Sources */,
 				7D3056052A59C02D00AA761B /* Utilities.swift in Sources */,
 				7D3055D22A599F3B00AA761B /* IntroductionPage.swift in Sources */,
+				7D90F8612A673119006A6FF6 /* User.swift in Sources */,
+				7D90F8572A67292D006A6FF6 /* StoryCircle.swift in Sources */,
 				7D3055D02A599F3B00AA761B /* WeddAppApp.swift in Sources */,
 				7D30560E2A5AD8FD00AA761B /* HomePage.swift in Sources */,
+				7D90F8592A672985006A6FF6 /* AnimatedBackground.swift in Sources */,
+				7D90F8552A672916006A6FF6 /* MessageCard.swift in Sources */,
 				7D30560A2A5AD2A700AA761B /* GalleryPage.swift in Sources */,
 				7D3056002A59BD9C00AA761B /* Models.swift in Sources */,
 				7D3056022A59BF2300AA761B /* TestModels.swift in Sources */,
