@@ -1,1 +1,19 @@
-GoogleService-Info.plist
+# Xcode
+*.xcuserdata/
+*.xcworkspace/
+*.swiftpm/
+
+# Swift Package Manager
+.build/
+
+# CocoaPods
+Pods/
+Podfile.lock
+*.xcconfig
+
+# Carthage
+Carthage/
+Cartfile.resolved
+
+# Firebase
+WeddApp/GoogleService-Info.plist
