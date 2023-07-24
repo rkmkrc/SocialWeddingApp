@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct IntroductionPage: View {
     var groom = TestModels.groom
@@ -47,12 +46,13 @@ struct IntroductionPage: View {
             Spacer()
             Text(TestModels.wedding.welcomeMessage).font(.title3).fontWeight(.regular).multilineTextAlignment(.center).padding(Constants.textPadding)
             Spacer()
-        }.background(AnimatedBackground(colorSet: 0).ignoresSafeArea().blur(radius: 190))
+        }.background(AnimatedBackground(colorSet: 0).blur(radius: 190))
+            .padding(.top, Constants.topPadding)
     }
 }
 
 struct IntroductionPage_Previews: PreviewProvider {
     static var previews: some View {
-        IntroductionPage().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        IntroductionPage()
     }
 }

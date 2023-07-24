@@ -15,5 +15,8 @@ Podfile.lock
 Carthage/
 Cartfile.resolved
 
+# Images
+
 # Firebase
 WeddApp/GoogleService-Info.plist
+

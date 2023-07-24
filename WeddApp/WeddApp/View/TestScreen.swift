@@ -1,3 +1,4 @@
+
 //
 //  PinKeyboardAndField.swift
 //  WeddApp
@@ -7,7 +8,7 @@
 
 import SwiftUI
 
-struct CircleTextFieldStyle: TextFieldStyle {
+struct xCircleTextFieldStyle: TextFieldStyle {
     func _body(configuration: TextField<Self._Label>) -> some View {
         configuration
             .font(.largeTitle)
@@ -20,7 +21,7 @@ struct CircleTextFieldStyle: TextFieldStyle {
     }
 }
 
-struct PINDisplay: View {
+struct xPINDisplay: View {
     let pin: String
     let numberOfCircles: Int = 4
     
@@ -62,7 +63,7 @@ struct PINDisplay: View {
 
 
 
-struct CallKeyboard: View {
+struct xCallKeyboard: View {
     @Binding var text: String
     
     let rows: [[String]] = [
@@ -82,10 +83,11 @@ struct CallKeyboard: View {
                 }
             }
         }
+        .padding()
     }
 }
 
-struct CallKeyboardButton: View {
+struct xCallKeyboardButton: View {
     @Binding var text: String
     let key: String
     
@@ -107,29 +109,26 @@ struct CallKeyboardButton: View {
     }
 }
 
-struct PinKeyboardAndField: View {
+struct xPinKeyboardAndField: View {
     @State private var pin: String = ""
-    @State private var correctPIN: String = "1111"
+    @State private var correctPIN: String = "1234"
     @State private var isCorrectPIN: Bool = false
-    @State private var pinWarning: String = ""
     
     var body: some View {
         VStack {
-            PINDisplay(pin: pin) // Display the PIN circles
+            PINDisplay(pin: pin)
             CallKeyboard(text: $pin)
-            Text(pinWarning)
+            Text(isCorrectPIN ?"Correct PIN" : "Incorrect PIN")
+            
         }
         .onChange(of: pin) { newValue in
-            if newValue.count == 4 && checkPIN() {
-                self.isCorrectPIN = true
-                let pinInfo: [String: String] = ["pin": pin]
-                NotificationCenter.default.post(name: .correctPINEntered, object: nil, userInfo: pinInfo)
-            } else if newValue.count == 4 {
-                pinWarning = "Incorrect PIN"
+            if newValue.count == 4 && !checkPIN() {
                 DispatchQueue.main.asyncAfter (deadline: .now() + 0.5) {
                     self.pin = ""
-                    self.pinWarning = ""
                 }
+                
+            } else if newValue.count == 4 && checkPIN() {
+                self.isCorrectPIN = true
             }
         }
     }
@@ -140,9 +139,9 @@ struct PinKeyboardAndField: View {
     }
 }
 
-struct PinKeyboardAndField_Previews: PreviewProvider {
+struct xPinKeyboardAndField_Previews: PreviewProvider {
     static var previews: some View {
-        PinKeyboardAndField().background(AnimatedBackground())
+        xPinKeyboardAndField().background(AnimatedBackground())
     }
 }
 

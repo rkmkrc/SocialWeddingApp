@@ -51,7 +51,8 @@ struct GalleryPage: View {
             }
             Spacer()
         }
-        .background(AnimatedBackground(colorSet: 1).ignoresSafeArea().blur(radius: 190))
+        .background(AnimatedBackground(colorSet: 1).blur(radius: 190))
+        .padding(.top, Constants.topPadding)
         .fullScreenCover(item: $selectedPhoto) { photo in
             GalleryFullScreenView(photo: photo, isPresented: $selectedPhoto)
         }

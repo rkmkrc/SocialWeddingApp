@@ -12,6 +12,7 @@ struct Constants {
     static let placeholderBrideImage = ""
     static let textPadding = 10.0
     static let imagePadding = 20.0
+    static let topPadding = 30.0
     static let album: [Photo] = [
         Photo(name: "groom"),
         Photo(name: "bride"),
