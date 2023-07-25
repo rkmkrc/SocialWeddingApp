@@ -10,6 +10,14 @@
 		3405401436F0A809F3C98313 /* Pods_WeddApp_WeddAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9DD3EAF1CBD3CACC12FFDF /* Pods_WeddApp_WeddAppUITests.framework */; };
 		4D8355E763F7148C5CD926A0 /* Pods_WeddApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A11A33B1957263BE421667 /* Pods_WeddApp.framework */; };
 		60509EE63DEB23DE66E382AC /* Pods_WeddAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 489568805C1953F203753049 /* Pods_WeddAppTests.framework */; };
+		7D2979182A70025A00A7629E /* FirebaseFirestore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D2979172A70025A00A7629E /* FirebaseFirestore.framework */; };
+		7D29791A2A70027D00A7629E /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D2979192A70027D00A7629E /* FirebaseAuth.framework */; };
+		7D29791C2A70027D00A7629E /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D29791B2A70027D00A7629E /* FirebaseDatabase.framework */; };
+		7D29791E2A70027D00A7629E /* FirebaseFirestore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D29791D2A70027D00A7629E /* FirebaseFirestore.framework */; };
+		7D2979202A70032100A7629E /* WeddingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D29791F2A70032100A7629E /* WeddingTests.swift */; };
+		7D2979222A70141200A7629E /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2979212A70141200A7629E /* NetworkController.swift */; };
+		7D2979242A70189400A7629E /* CustomTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2979232A70189400A7629E /* CustomTest.swift */; };
+		7D2979272A702D6700A7629E /* Network Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2979262A702D6700A7629E /* Network Errors.swift */; };
 		7D2D04C02A6EEDB1002467AF /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7D2D04BF2A6EEDB1002467AF /* .gitignore */; };
 		7D3055D02A599F3B00AA761B /* WeddAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3055CF2A599F3B00AA761B /* WeddAppApp.swift */; };
 		7D3055D22A599F3B00AA761B /* IntroductionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3055D12A599F3B00AA761B /* IntroductionPage.swift */; };
@@ -34,8 +42,8 @@
 		7D90F85B2A6729C7006A6FF6 /* AnimatedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D90F85A2A6729C7006A6FF6 /* AnimatedText.swift */; };
 		7D9C1D9A2A69633D008BF0CF /* AuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9C1D982A69633C008BF0CF /* AuthTests.swift */; };
 		7D9C1D9B2A69633D008BF0CF /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9C1D992A69633D008BF0CF /* UserTests.swift */; };
-		7DAAEA222A6AD70F006F801C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7DAAEA212A6AD70F006F801C /* GoogleService-Info.plist */; };
-		7DAAEA232A6AD70F006F801C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7DAAEA212A6AD70F006F801C /* GoogleService-Info.plist */; };
+		7DAA34D22A6FE35A00167B04 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7DAA34D12A6FE35A00167B04 /* GoogleService-Info.plist */; };
+		7DAA34D32A6FE35A00167B04 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7DAA34D12A6FE35A00167B04 /* GoogleService-Info.plist */; };
 		7DAAEA262A6AF558006F801C /* OtpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAAEA252A6AF558006F801C /* OtpScreen.swift */; };
 		7DAAEA272A6AF558006F801C /* OtpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAAEA252A6AF558006F801C /* OtpScreen.swift */; };
 		7DEAAF242A6E938A00EB3F00 /* TestScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEAAF232A6E938A00EB3F00 /* TestScreen.swift */; };
@@ -65,6 +73,14 @@
 		2CCBE7CB69625FC1AC86D025 /* Pods-WeddAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeddAppTests.release.xcconfig"; path = "Target Support Files/Pods-WeddAppTests/Pods-WeddAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		33A11A33B1957263BE421667 /* Pods_WeddApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeddApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		489568805C1953F203753049 /* Pods_WeddAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeddAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D2979172A70025A00A7629E /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D2979192A70027D00A7629E /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D29791B2A70027D00A7629E /* FirebaseDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D29791D2A70027D00A7629E /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D29791F2A70032100A7629E /* WeddingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeddingTests.swift; sourceTree = "<group>"; };
+		7D2979212A70141200A7629E /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		7D2979232A70189400A7629E /* CustomTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTest.swift; sourceTree = "<group>"; };
+		7D2979262A702D6700A7629E /* Network Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network Errors.swift"; sourceTree = "<group>"; };
 		7D2D04BF2A6EEDB1002467AF /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		7D3055CC2A599F3B00AA761B /* WeddApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeddApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D3055CF2A599F3B00AA761B /* WeddAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeddAppApp.swift; sourceTree = "<group>"; };
@@ -92,7 +108,7 @@
 		7D90F85A2A6729C7006A6FF6 /* AnimatedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedText.swift; sourceTree = "<group>"; };
 		7D9C1D982A69633C008BF0CF /* AuthTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthTests.swift; sourceTree = "<group>"; };
 		7D9C1D992A69633D008BF0CF /* UserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
-		7DAAEA212A6AD70F006F801C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7DAA34D12A6FE35A00167B04 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7DAAEA252A6AF558006F801C /* OtpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpScreen.swift; sourceTree = "<group>"; };
 		7DEAAF232A6E938A00EB3F00 /* TestScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestScreen.swift; sourceTree = "<group>"; };
 		7DFA37B52A6D61BA0056C490 /* Authentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
@@ -109,6 +125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D2979182A70025A00A7629E /* FirebaseFirestore.framework in Frameworks */,
 				4D8355E763F7148C5CD926A0 /* Pods_WeddApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -117,7 +134,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D29791C2A70027D00A7629E /* FirebaseDatabase.framework in Frameworks */,
 				60509EE63DEB23DE66E382AC /* Pods_WeddAppTests.framework in Frameworks */,
+				7D29791A2A70027D00A7629E /* FirebaseAuth.framework in Frameworks */,
+				7D29791E2A70027D00A7629E /* FirebaseFirestore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,11 +155,23 @@
 		6B58486C185716144CB0F76D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7D2979192A70027D00A7629E /* FirebaseAuth.framework */,
+				7D29791B2A70027D00A7629E /* FirebaseDatabase.framework */,
+				7D29791D2A70027D00A7629E /* FirebaseFirestore.framework */,
+				7D2979172A70025A00A7629E /* FirebaseFirestore.framework */,
 				33A11A33B1957263BE421667 /* Pods_WeddApp.framework */,
 				9A9DD3EAF1CBD3CACC12FFDF /* Pods_WeddApp_WeddAppUITests.framework */,
 				489568805C1953F203753049 /* Pods_WeddAppTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7D2979252A702D4E00A7629E /* Custom Errors */ = {
+			isa = PBXGroup;
+			children = (
+				7D2979262A702D6700A7629E /* Network Errors.swift */,
+			);
+			path = "Custom Errors";
 			sourceTree = "<group>";
 		};
 		7D3055C32A599F3B00AA761B = {
@@ -168,7 +200,7 @@
 		7D3055CE2A599F3B00AA761B /* WeddApp */ = {
 			isa = PBXGroup;
 			children = (
-				7DAAEA212A6AD70F006F801C /* GoogleService-Info.plist */,
+				7DAA34D12A6FE35A00167B04 /* GoogleService-Info.plist */,
 				7D3056082A5AD28500AA761B /* View */,
 				7D3056032A59C01E00AA761B /* Utils */,
 				7D3055FE2A59BD7800AA761B /* Model */,
@@ -194,7 +226,9 @@
 			children = (
 				7D9C1D982A69633C008BF0CF /* AuthTests.swift */,
 				7D9C1D992A69633D008BF0CF /* UserTests.swift */,
+				7D29791F2A70032100A7629E /* WeddingTests.swift */,
 				7D3055E52A599F3B00AA761B /* WeddAppTests.swift */,
+				7D2979232A70189400A7629E /* CustomTest.swift */,
 			);
 			path = WeddAppTests;
 			sourceTree = "<group>";
@@ -215,6 +249,7 @@
 				7DFA37B72A6D61C20056C490 /* User.swift */,
 				7D3055FF2A59BD9C00AA761B /* Models.swift */,
 				7D3056012A59BF2300AA761B /* TestModels.swift */,
+				7D2979212A70141200A7629E /* NetworkController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -222,6 +257,7 @@
 		7D3056032A59C01E00AA761B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				7D2979252A702D4E00A7629E /* Custom Errors */,
 				7D90F8532A6728EA006A6FF6 /* UI Components */,
 				7D3056042A59C02D00AA761B /* Utilities.swift */,
 				7D3056062A59C0C600AA761B /* Constants.swift */,
@@ -385,8 +421,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D2D04C02A6EEDB1002467AF /* .gitignore in Resources */,
+				7DAA34D22A6FE35A00167B04 /* GoogleService-Info.plist in Resources */,
 				7D3055D72A599F3B00AA761B /* Preview Assets.xcassets in Resources */,
-				7DAAEA222A6AD70F006F801C /* GoogleService-Info.plist in Resources */,
 				7D3055D42A599F3B00AA761B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -395,7 +431,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7DAAEA232A6AD70F006F801C /* GoogleService-Info.plist in Resources */,
+				7DAA34D32A6FE35A00167B04 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,12 +557,14 @@
 				7D3055DC2A599F3B00AA761B /* WeddApp.xcdatamodeld in Sources */,
 				7DEAAF242A6E938A00EB3F00 /* TestScreen.swift in Sources */,
 				7DFA37B62A6D61BA0056C490 /* Authentication.swift in Sources */,
+				7D2979222A70141200A7629E /* NetworkController.swift in Sources */,
 				7D90F8522A66D248006A6FF6 /* StoryPage.swift in Sources */,
 				7D3056052A59C02D00AA761B /* Utilities.swift in Sources */,
 				7D3055D22A599F3B00AA761B /* IntroductionPage.swift in Sources */,
 				7D90F8572A67292D006A6FF6 /* StoryCircle.swift in Sources */,
 				7D3055D02A599F3B00AA761B /* WeddAppApp.swift in Sources */,
 				7D4CD60A2A6BF23D00A390A1 /* PinKeyboardAndField.swift in Sources */,
+				7D2979272A702D6700A7629E /* Network Errors.swift in Sources */,
 				7D30560E2A5AD8FD00AA761B /* HomePage.swift in Sources */,
 				7D90F8592A672985006A6FF6 /* AnimatedBackground.swift in Sources */,
 				7D90F8552A672916006A6FF6 /* MessageCard.swift in Sources */,
@@ -547,6 +585,8 @@
 				7DAAEA272A6AF558006F801C /* OtpScreen.swift in Sources */,
 				7D3055E62A599F3B00AA761B /* WeddAppTests.swift in Sources */,
 				7D9C1D9A2A69633D008BF0CF /* AuthTests.swift in Sources */,
+				7D2979242A70189400A7629E /* CustomTest.swift in Sources */,
+				7D2979202A70032100A7629E /* WeddingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

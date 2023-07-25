@@ -7,6 +7,7 @@
 
 import XCTest
 import Firebase
+import FirebaseFirestore
 @testable import WeddApp
 
 class UserTests: XCTestCase {
@@ -53,7 +54,6 @@ class UserTests: XCTestCase {
         }
         waitForExpectations(timeout: 10, handler: nil)
     }
-
 }
 
 

@@ -145,5 +145,36 @@ struct xPinKeyboardAndField_Previews: PreviewProvider {
     }
 }
 
+struct test: View {
+    @State private var wedding: Wedding? = nil
+    
+    var body: some View {
+        VStack {
+            if let wedding = wedding {
+                Text(wedding.title)
+            }
+            else { Text("Incorrect PIN") }
+            
+        }.onAppear {
+            // Fetch wedding data from Firestore using WeddingNetworkController
+            let weddingID = "1"
+            WeddingNetworkController().getWeddingWithID(id: weddingID) { (result: Result<Wedding, Error>) in
+                switch result {
+                case .success(let wedding):
+                    print(wedding)
+                    self.wedding = wedding
+                case .failure(let error):
+                    print("Error fetching wedding data: \(error.localizedDescription)")
+                }
+            }
+        }
+        
+    }
+}
 
+struct sddsf: PreviewProvider {
+    static var previews: some View {
+        test()
+    }
+}
 
