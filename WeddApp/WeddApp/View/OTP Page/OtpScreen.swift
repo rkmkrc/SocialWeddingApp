@@ -28,22 +28,22 @@ struct OTPPage: View {
                         .foregroundColor(.white)
                         .fontWeight(.light)
                         .multilineTextAlignment(.center)
-             //       PinKeyboardAndField().padding().ignoresSafeArea()
-            //        NavigationLink(destination: HomePage(pin: self.pin), isActive: $isOTPSuccessful) { EmptyView() }
+                    PinKeyboardAndField().padding().ignoresSafeArea()
+                    NavigationLink(destination: HomePage(pin: self.pin), isActive: $isOTPSuccessful) { EmptyView() }
                     
                 }
                 .padding()
                 .frame(width: geometry.size.width, height: geometry.size.height) 
-             //   .background(AnimatedBackground(colorSet: 0).ignoresSafeArea())
+                .background(AnimatedBackground(colorSet: 0).ignoresSafeArea())
             }
             
         }
-   /*     .onReceive(NotificationCenter.default.publisher(for: .correctPINEntered)) { notification in
+        .onReceive(NotificationCenter.default.publisher(for: .correctPINEntered)) { notification in
             if let pinInfo = notification.userInfo as? [String: String], let pinValue = pinInfo["pin"] {
                 self.isOTPSuccessful = true
                 self.pin = pinValue
             }
-        }*/
+        }
         }
 }
 

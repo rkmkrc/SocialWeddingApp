@@ -10,6 +10,7 @@
 		3405401436F0A809F3C98313 /* Pods_WeddApp_WeddAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9DD3EAF1CBD3CACC12FFDF /* Pods_WeddApp_WeddAppUITests.framework */; };
 		4D8355E763F7148C5CD926A0 /* Pods_WeddApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A11A33B1957263BE421667 /* Pods_WeddApp.framework */; };
 		60509EE63DEB23DE66E382AC /* Pods_WeddAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 489568805C1953F203753049 /* Pods_WeddAppTests.framework */; };
+		7D0F731B2A715C19005E66AF /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0F731A2A715C19005E66AF /* ViewModel.swift */; };
 		7D2979182A70025A00A7629E /* FirebaseFirestore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D2979172A70025A00A7629E /* FirebaseFirestore.framework */; };
 		7D29791A2A70027D00A7629E /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D2979192A70027D00A7629E /* FirebaseAuth.framework */; };
 		7D29791C2A70027D00A7629E /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D29791B2A70027D00A7629E /* FirebaseDatabase.framework */; };
@@ -73,6 +74,7 @@
 		2CCBE7CB69625FC1AC86D025 /* Pods-WeddAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeddAppTests.release.xcconfig"; path = "Target Support Files/Pods-WeddAppTests/Pods-WeddAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		33A11A33B1957263BE421667 /* Pods_WeddApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeddApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		489568805C1953F203753049 /* Pods_WeddAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeddAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D0F731A2A715C19005E66AF /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		7D2979172A70025A00A7629E /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D2979192A70027D00A7629E /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D29791B2A70027D00A7629E /* FirebaseDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,6 +168,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7D0F73192A715C06005E66AF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7D0F731A2A715C19005E66AF /* ViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		7D2979252A702D4E00A7629E /* Custom Errors */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				7DAA34D12A6FE35A00167B04 /* GoogleService-Info.plist */,
+				7D0F73192A715C06005E66AF /* ViewModel */,
 				7D3056082A5AD28500AA761B /* View */,
 				7D3056032A59C01E00AA761B /* Utils */,
 				7D3055FE2A59BD7800AA761B /* Model */,
@@ -557,6 +568,7 @@
 				7D3055DC2A599F3B00AA761B /* WeddApp.xcdatamodeld in Sources */,
 				7DEAAF242A6E938A00EB3F00 /* TestScreen.swift in Sources */,
 				7DFA37B62A6D61BA0056C490 /* Authentication.swift in Sources */,
+				7D0F731B2A715C19005E66AF /* ViewModel.swift in Sources */,
 				7D2979222A70141200A7629E /* NetworkController.swift in Sources */,
 				7D90F8522A66D248006A6FF6 /* StoryPage.swift in Sources */,
 				7D3056052A59C02D00AA761B /* Utilities.swift in Sources */,

@@ -8,15 +8,14 @@
 import SwiftUI
 
 struct IntroductionPage: View {
-    var groom = TestModels.groom
-    var bride = TestModels.bride
+    @ObservedObject var model: ViewModel
     
     var body: some View {
         VStack(alignment: .center) {
-            AnimatedText(title: TestModels.wedding.title)
+            AnimatedText(title: model.wed?.title ?? "")
             HStack {
                 VStack {
-                    Image(groom.image)
+                    Image(model.wed?.groom.image ?? "")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .clipShape(Circle())
@@ -25,10 +24,10 @@ struct IntroductionPage: View {
                                 .stroke(Color.gray, lineWidth: 1)
                         )
                         .padding(Constants.imagePadding)
-                    Text(groom.name).font(.title3).fontWeight(.light)
+                    Text(model.wed?.groom.name ?? "").font(.title3).fontWeight(.light)
                 }
                 VStack {
-                    Image(bride.image)
+                    Image(model.wed?.bride.image ?? "")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .clipShape(Circle())
@@ -37,22 +36,26 @@ struct IntroductionPage: View {
                                 .stroke(Color.gray, lineWidth: 1)
                         )
                         .padding(Constants.imagePadding)
-                    Text(bride.name).font(.title3).fontWeight(.light).lineLimit(2)
+                    Text(model.wed?.bride.name ?? "").font(.title3).fontWeight(.light).lineLimit(2)
                 }
             }
             Spacer()
-            Text(TestModels.wedding.date).font(.title2).fontWeight(.regular).padding(Constants.textPadding)
-            Text(TestModels.wedding.location).font(.title3).fontWeight(.light)
+            Text(model.wed?.date ?? "").font(.title2).fontWeight(.regular).padding(Constants.textPadding)
+            Text(model.wed?.location ?? "   ").font(.title3).fontWeight(.light)
             Spacer()
-            Text(TestModels.wedding.welcomeMessage).font(.title3).fontWeight(.regular).multilineTextAlignment(.center).padding(Constants.textPadding)
+            Text(model.wed?.welcomeMessage ?? "").font(.title3).fontWeight(.regular).multilineTextAlignment(.center).padding(Constants.textPadding)
             Spacer()
         }.background(AnimatedBackground(colorSet: 0).blur(radius: 190))
             .padding(.top, Constants.topPadding)
     }
+    init(model: ViewModel) {
+        self.model = model
+    }
 }
-
+/*
 struct IntroductionPage_Previews: PreviewProvider {
     static var previews: some View {
         IntroductionPage()
     }
 }
+*/

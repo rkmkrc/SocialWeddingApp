@@ -27,28 +27,18 @@ struct Groom: Codable {
     var surname: String
     let image: String
 }
-struct Wedding: Codable {
-    let id: Int
+struct Wedding: Codable, Identifiable {
+    let id: String
     let groom: Groom
     let bride: Bride
     let date: String
-    let location: String
+    let location: String?
     let welcomeMessage: String
     var title: String {
-        return "\(groom.name) \u{2764} \(bride.name)"
+        return "\(self.groom.name) \u{2764} \(self.bride.name)"
     }
-    init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-
-            // Decode the properties using the appropriate keys from CodingKeys
-            id = try container.decode(Int.self, forKey: .id)
-            groom = try container.decode(Groom.self, forKey: .groom)
-            bride = try container.decode(Bride.self, forKey: .bride)
-            date = try container.decode(String.self, forKey: .date)
-            location = try container.decode(String.self, forKey: .location)
-            welcomeMessage = try container.decode(String.self, forKey: .welcomeMessage)
-        }
-    init(id: Int, groom: Groom, bride: Bride, date: String, location: String, welcomeMessage: String, album: [Photo]) {
+    
+    init(id: String, groom: Groom, bride: Bride, date: String, location: String, welcomeMessage: String, album: [Photo]) {
         self.id = id
         self.groom = groom
         self.bride = bride
@@ -71,7 +61,7 @@ struct Wedding: Codable {
                 "image": bride.image
             ],
             "date": date,
-            "location": location,
+            "location": location ?? "x",
             "welcomeMessage": welcomeMessage
         ]
     }

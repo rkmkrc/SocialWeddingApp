@@ -9,10 +9,10 @@ import Foundation
 import SwiftUI
 
 struct AnimatedText: View {
-    
     @State private var counter: Int = 0
     @State private var rotation: Double = 0
     @State private var isSliding: Bool = false
+    @State private var currentTitle: String = ""
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     var title: String
     var letters: [Character] {
@@ -36,7 +36,9 @@ struct AnimatedText: View {
             Spacer()
         }
         .padding(EdgeInsets(top: 16, leading: 32, bottom: 16, trailing: 32))
-        .onAppear {
+        .onChange(of: title) { newTitle in
+            // Update currentTitle and trigger animations when title changes
+            currentTitle = newTitle
             isSliding = true
             rotation = 360
         }
