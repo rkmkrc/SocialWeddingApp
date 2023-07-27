@@ -9,7 +9,7 @@ import Foundation
 import FirebaseFirestore
 
 class ViewModel: ObservableObject {
-    var id: String
+    var id: String = ""
     @Published var weddings = [Wedding]()
     @Published var wed: Wedding?
     private let db = Firestore.firestore()
@@ -19,6 +19,7 @@ class ViewModel: ObservableObject {
     }
     
     func getWedding() {
+        print("----------------------------------- Get Wedd \(id) -----------------------------------")
         // Reference for db
         let docRef = db.collection("Weddings").document(id)
         docRef.getDocument { (document, error) in
@@ -81,7 +82,18 @@ class ViewModel: ObservableObject {
                 print("Wedding document successfully set!")
             }
         }
-
     }
+    
+    func isWeddingExist(id: String, completion: @escaping (Bool) -> Void) {
+        let docRef = db.collection("Weddings").document(id)
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
+    }
+
     
 }

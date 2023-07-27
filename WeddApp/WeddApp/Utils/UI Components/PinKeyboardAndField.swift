@@ -108,11 +108,12 @@ struct CallKeyboardButton: View {
 }
 
 struct PinKeyboardAndField: View {
+    @ObservedObject var model = ViewModel(id: "1111")
     @State private var pin: String = ""
     @State private var correctPIN: String = "1111"
     @State private var isCorrectPIN: Bool = false
     @State private var pinWarning: String = ""
-    
+    let pinList = ["1111", "1112", "1113", "1114"]
     var body: some View {
         VStack {
             PINDisplay(pin: pin) // Display the PIN circles
@@ -120,31 +121,30 @@ struct PinKeyboardAndField: View {
             Text(pinWarning)
         }
         .onChange(of: pin) { newValue in
-            if newValue.count == 4 && checkPIN() {
-                self.isCorrectPIN = true
-                let pinInfo: [String: String] = ["pin": pin]
-                NotificationCenter.default.post(name: .correctPINEntered, object: nil, userInfo: pinInfo)
-            } else if newValue.count == 4 {
-                pinWarning = "Incorrect PIN"
-                DispatchQueue.main.asyncAfter (deadline: .now() + 0.5) {
-                    self.pin = ""
-                    self.pinWarning = ""
+            if newValue.count == 4 {
+                model.isWeddingExist(id: pin) { exists in
+                    if exists {
+                        self.isCorrectPIN = true
+                        let pinInfo: [String: String] = ["pin": pin]
+                        NotificationCenter.default.post(name: .correctPINEntered, object: nil, userInfo: pinInfo)
+                    } else {
+                        pinWarning = "Incorrect PIN"
+                        DispatchQueue.main.asyncAfter (deadline: .now() + 0.5) {
+                            self.pin = ""
+                            self.pinWarning = ""
+                        }
+                    }
                 }
             }
         }
     }
-    
-    // Function to check if the entered PIN is correct
-    private func checkPIN() -> Bool {
-        return pin == correctPIN
-    }
 }
-
+/*
 struct PinKeyboardAndField_Previews: PreviewProvider {
     static var previews: some View {
         PinKeyboardAndField().background(AnimatedBackground())
     }
 }
-
+*/
 
 

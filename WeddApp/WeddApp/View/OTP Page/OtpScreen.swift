@@ -11,7 +11,7 @@ import SwiftUI
 struct OTPPage: View {
     @State private var otp: String = ""
     @State private var isOTPSuccessful: Bool = false
-    @State private var pin: String = ""
+    @State private var pin: String = "1000"
     
     var body: some View {
         NavigationView {
