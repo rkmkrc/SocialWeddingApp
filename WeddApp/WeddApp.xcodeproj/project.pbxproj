@@ -16,8 +16,6 @@
 		7D29791C2A70027D00A7629E /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D29791B2A70027D00A7629E /* FirebaseDatabase.framework */; };
 		7D29791E2A70027D00A7629E /* FirebaseFirestore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D29791D2A70027D00A7629E /* FirebaseFirestore.framework */; };
 		7D2979202A70032100A7629E /* WeddingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D29791F2A70032100A7629E /* WeddingTests.swift */; };
-		7D2979222A70141200A7629E /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2979212A70141200A7629E /* NetworkController.swift */; };
-		7D2979242A70189400A7629E /* CustomTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2979232A70189400A7629E /* CustomTest.swift */; };
 		7D2979272A702D6700A7629E /* Network Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2979262A702D6700A7629E /* Network Errors.swift */; };
 		7D2D04C02A6EEDB1002467AF /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7D2D04BF2A6EEDB1002467AF /* .gitignore */; };
 		7D3055D02A599F3B00AA761B /* WeddAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3055CF2A599F3B00AA761B /* WeddAppApp.swift */; };
@@ -80,8 +78,6 @@
 		7D29791B2A70027D00A7629E /* FirebaseDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D29791D2A70027D00A7629E /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D29791F2A70032100A7629E /* WeddingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeddingTests.swift; sourceTree = "<group>"; };
-		7D2979212A70141200A7629E /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
-		7D2979232A70189400A7629E /* CustomTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTest.swift; sourceTree = "<group>"; };
 		7D2979262A702D6700A7629E /* Network Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network Errors.swift"; sourceTree = "<group>"; };
 		7D2D04BF2A6EEDB1002467AF /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		7D3055CC2A599F3B00AA761B /* WeddApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeddApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -239,7 +235,6 @@
 				7D9C1D992A69633D008BF0CF /* UserTests.swift */,
 				7D29791F2A70032100A7629E /* WeddingTests.swift */,
 				7D3055E52A599F3B00AA761B /* WeddAppTests.swift */,
-				7D2979232A70189400A7629E /* CustomTest.swift */,
 			);
 			path = WeddAppTests;
 			sourceTree = "<group>";
@@ -260,7 +255,6 @@
 				7DFA37B72A6D61C20056C490 /* User.swift */,
 				7D3055FF2A59BD9C00AA761B /* Models.swift */,
 				7D3056012A59BF2300AA761B /* TestModels.swift */,
-				7D2979212A70141200A7629E /* NetworkController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -569,7 +563,6 @@
 				7DEAAF242A6E938A00EB3F00 /* TestScreen.swift in Sources */,
 				7DFA37B62A6D61BA0056C490 /* Authentication.swift in Sources */,
 				7D0F731B2A715C19005E66AF /* ViewModel.swift in Sources */,
-				7D2979222A70141200A7629E /* NetworkController.swift in Sources */,
 				7D90F8522A66D248006A6FF6 /* StoryPage.swift in Sources */,
 				7D3056052A59C02D00AA761B /* Utilities.swift in Sources */,
 				7D3055D22A599F3B00AA761B /* IntroductionPage.swift in Sources */,
@@ -597,7 +590,6 @@
 				7DAAEA272A6AF558006F801C /* OtpScreen.swift in Sources */,
 				7D3055E62A599F3B00AA761B /* WeddAppTests.swift in Sources */,
 				7D9C1D9A2A69633D008BF0CF /* AuthTests.swift in Sources */,
-				7D2979242A70189400A7629E /* CustomTest.swift in Sources */,
 				7D2979202A70032100A7629E /* WeddingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

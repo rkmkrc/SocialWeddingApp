@@ -44,11 +44,11 @@ struct AnimatedText: View {
         }
     }
 }
-
-
+/*
 struct AnimatedText_Previews: PreviewProvider {
     static var previews: some View {
         AnimatedText(title: TestModels.wedding.title)
             .preferredColorScheme(.dark)
     }
 }
+*/

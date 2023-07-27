@@ -52,7 +52,7 @@ struct GalleryPage: View {
             Spacer()
         }
         .background(AnimatedBackground(colorSet: 1).blur(radius: 190))
-        .padding(.top, Constants.topPadding)
+        .padding(.top, Constants.TOP_PADDING)
         .fullScreenCover(item: $selectedPhoto) { photo in
             GalleryFullScreenView(photo: photo, isPresented: $selectedPhoto)
         }
@@ -102,15 +102,12 @@ struct GalleryFullScreenView: View {
     
     private struct DragState {
         var activeTranslation: CGSize = .zero
-        
         var translation: CGSize {
             activeTranslation
         }
-        
         var isDraggingUp: Bool {
             activeTranslation.height < 0
         }
-        
         static let inactive = DragState()
     }
 }

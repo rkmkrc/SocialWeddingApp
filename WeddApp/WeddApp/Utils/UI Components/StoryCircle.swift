@@ -46,7 +46,6 @@ struct StoryCircle: View {
                                         .frame(width: geometry.size.width * (1.1 - timerProgress), height: 2)
                                 }
                                 .padding(.all, 20)
-                                
                                 Image(imageName)
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)

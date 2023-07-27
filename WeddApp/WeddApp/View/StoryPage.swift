@@ -31,7 +31,7 @@ struct StoryPage: View {
                 .padding()
             }
         }.background(AnimatedBackground(colorSet: 1).blur(radius: 190))
-            .padding(.top, Constants.topPadding)
+            .padding(.top, Constants.TOP_PADDING)
     }
 }
 

@@ -47,14 +47,14 @@ class WeddingTests: XCTestCase {
     func testFindWeddingByID() {
         // Ensure a valid wedding ID is available from the previous test
         XCTAssertNotNil(weddingID, "Wedding ID is nil")
-
+        
         let expectation = self.expectation(description: "Find wedding by ID")
-
+        
         // Use Firebase Firestore to fetch the wedding document by its id field
         let db = Firestore.firestore()
         let collectionRef = db.collection("Weddings")
         let query = collectionRef.whereField("id", isEqualTo: Int(weddingID) as Any)
-
+        
         query.getDocuments { (snapshot, error) in
             if let error = error {
                 XCTFail("Error fetching wedding document: \(error.localizedDescription)")
@@ -63,10 +63,10 @@ class WeddingTests: XCTestCase {
                     XCTFail("Failed to find the wedding document")
                     return
                 }
-
+                
                 // Ensure there's only one document with the provided id field
                 XCTAssertEqual(documents.count, 1)
-
+                
                 let weddingDocument = documents[0]
                 let weddingData = weddingDocument.data()
                 
@@ -77,7 +77,6 @@ class WeddingTests: XCTestCase {
                 expectation.fulfill()
             }
         }
-
         waitForExpectations(timeout: 10, handler: nil)
     }
 }

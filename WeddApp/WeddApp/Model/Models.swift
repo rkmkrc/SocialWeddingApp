@@ -7,35 +7,25 @@
 
 import Foundation
 
-struct NetworkBride: Person {
-    var name: String?
-    var surname: String?
-    let image: String?
-}
-struct NetworkGroom: Person {
-    var name: String?
-    var surname: String?
-    let image: String?
-}
 struct Bride: Codable {
-    var name: String
-    var surname: String
-    let image: String
+    var name: String?
+    var surname: String?
+    let image: String?
 }
 struct Groom: Codable {
-    var name: String
-    var surname: String
-    let image: String
+    var name: String?
+    var surname: String?
+    let image: String?
 }
 struct Wedding: Codable, Identifiable {
-    let id: String
-    let groom: Groom
-    let bride: Bride
-    let date: String
+    let id: String?
+    let groom: Groom?
+    let bride: Bride?
+    let date: String?
     let location: String?
-    let welcomeMessage: String
+    let welcomeMessage: String?
     var title: String {
-        return "\(self.groom.name) \u{2764} \(self.bride.name)"
+        return "\(self.groom?.name ?? Constants.DEFAULT_NAME) \u{2764} \(self.bride?.name ?? Constants.DEFAULT_NAME)"
     }
     
     init(id: String, groom: Groom, bride: Bride, date: String, location: String, welcomeMessage: String, album: [Photo]) {
@@ -49,27 +39,20 @@ struct Wedding: Codable, Identifiable {
     
     func toDictionary() -> [String: Any] {
         return [
-            "id": id,
+            "id": id ?? "0",
             "groom": [
-                "name": groom.name,
-                "surname": groom.surname,
-                "image": groom.image
+                "name": groom?.name ?? Constants.DEFAULT_NAME,
+                "surname": groom?.surname ?? Constants.DEFAULT_SURNAME,
+                "image": groom?.image ?? Constants.PLACEHOLDER_GROOM_IMAGE
             ],
             "bride": [
-                "name": bride.name,
-                "surname": bride.surname,
-                "image": bride.image
+                "name": bride?.name ?? Constants.DEFAULT_NAME,
+                "surname": bride?.surname ?? Constants.DEFAULT_SURNAME,
+                "image": bride?.image ?? Constants.PLACEHOLDER_BRIDE_IMAGE
             ],
-            "date": date,
-            "location": location ?? "x",
-            "welcomeMessage": welcomeMessage
+            "date": date ?? Constants.DEFAULT_DATE,
+            "location": location ?? Constants.DEFAULT_LOCATION,
+            "welcomeMessage": welcomeMessage ?? Constants.DEFAULT_WELCOME_MESSAGE
         ]
     }
 }
-
-protocol Person {
-    var name: String?{get}
-    var surname: String?{get}
-    var image: String?{get}
-}
-

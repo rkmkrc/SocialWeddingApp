@@ -13,7 +13,6 @@ class AuthenticationTests: XCTestCase {
     
     override class func setUp() {
         super.setUp()
-
         // Configure Firebase app for testing only if it hasn't been configured yet
         if FirebaseApp.app() == nil {
             FirebaseApp.configure()
@@ -35,7 +34,6 @@ class AuthenticationTests: XCTestCase {
             XCTAssertNotNil(authResult, "Sign up with email succeeded but authResult is nil")
             expectation.fulfill()
         }
-        
         waitForExpectations(timeout: 5, handler: nil)
     }
     
@@ -49,7 +47,6 @@ class AuthenticationTests: XCTestCase {
             XCTAssertNotNil(authResult, "Sign in with email succeeded but authResult is nil")
             expectation.fulfill()
         }
-        
         waitForExpectations(timeout: 5, handler: nil)
     }
     
@@ -81,7 +78,6 @@ class AuthenticationTests: XCTestCase {
             XCTAssertNil(error, "Reset password failed: \(error?.localizedDescription ?? "")")
             expectation.fulfill()
         }
-        
         waitForExpectations(timeout: 5, handler: nil)
     }
 }

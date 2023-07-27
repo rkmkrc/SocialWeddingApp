@@ -9,9 +9,8 @@ import Foundation
 import SwiftUI
 
 struct OTPPage: View {
-    @State private var otp: String = ""
     @State private var isOTPSuccessful: Bool = false
-    @State private var pin: String = "1000"
+    @State private var pin: String = "0"
     
     var body: some View {
         NavigationView {
@@ -23,17 +22,16 @@ struct OTPPage: View {
                         .foregroundColor(.white)
                         .fontWeight(.semibold)
                         .multilineTextAlignment(.center)
-                    Text("Please type the number on the red card.")
+                    Text("Please type the number on the card.")
                         .font(.title3)
                         .foregroundColor(.white)
                         .fontWeight(.light)
                         .multilineTextAlignment(.center)
                     PinKeyboardAndField().padding().ignoresSafeArea()
                     NavigationLink(destination: HomePage(pin: self.pin), isActive: $isOTPSuccessful) { EmptyView() }
-                    
                 }
                 .padding()
-                .frame(width: geometry.size.width, height: geometry.size.height) 
+                .frame(width: geometry.size.width, height: geometry.size.height)
                 .background(AnimatedBackground(colorSet: 0).ignoresSafeArea())
             }
             
@@ -44,7 +42,7 @@ struct OTPPage: View {
                 self.pin = pinValue
             }
         }
-        }
+    }
 }
 
 struct OTPPage_Previews: PreviewProvider {

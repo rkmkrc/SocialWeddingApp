@@ -12,7 +12,7 @@ import FirebaseFirestore
 
 class UserTests: XCTestCase {
     var ref: DatabaseReference!
-
+    
     override func setUp() {
         super.setUp()
         if FirebaseApp.app() == nil {
@@ -20,28 +20,28 @@ class UserTests: XCTestCase {
         }
         ref = Database.database().reference()
     }
-
+    
     override func tearDown() {
         super.tearDown()
         if let ref = ref {
             ref.child("Users").removeValue()
         }
     }
-
+    
     func testCreateUser() {
         let expectation = self.expectation(description: "Create user")
         let userName = "John Doe"
         let email = "john.doe@example.com"
         let userType = "Customer"
         let phoneNumber = "123456"
-
+        
         // Create a mock user for testing
         let user = User(userName: userName, email: email, userType: userType, phoneNumber: phoneNumber)
-
+        
         // Use Firebase Auth to create a user with email and password
         Auth.auth().createUser(withEmail: user.email, password: "password") { (authResult, error) in
             XCTAssertNil(error, "Error creating user: \(error?.localizedDescription ?? "")")
-
+            
             // Check if user creation was successful
             if let _ = authResult?.user {
                 // Use Firebase Firestore to save the user data

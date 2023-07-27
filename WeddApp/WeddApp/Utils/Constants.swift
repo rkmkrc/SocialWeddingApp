@@ -8,34 +8,25 @@
 import Foundation
 
 struct Constants {
-    static let placeholderGroomImage = ""
-    static let placeholderBrideImage = ""
-    static let textPadding = 10.0
-    static let imagePadding = 20.0
-    static let topPadding = 30.0
-    static let album: [Photo] = [
-        Photo(name: "groom"),
-        Photo(name: "bride"),
-        Photo(name: "p1"),
-        Photo(name: "p2"),
-        Photo(name: "p3"),
-        Photo(name: "p4"),
-        Photo(name: "p5"),
-        Photo(name: "groom"),
-        Photo(name: "groom"),
-        Photo(name: "bride"),
-        Photo(name: "p1"),
-        Photo(name: "p2"),
-        Photo(name: "p3"),
-        Photo(name: "p4"),
-        Photo(name: "p5"),
-        Photo(name: "groom"),
-        Photo(name: "groom"),
-        Photo(name: "bride"),
-        Photo(name: "p1"),
-        Photo(name: "p2"),
-        Photo(name: "p3"),
-        Photo(name: "p4"),
-        Photo(name: "p5"),
-        Photo(name: "groom")]
+    static let PLACEHOLDER_GROOM_IMAGE = ""
+    static let PLACEHOLDER_BRIDE_IMAGE = ""
+    static let TEXT_PADDING = 10.0
+    static let IMAGE_PADDING = 20.0
+    static let TOP_PADDING = 30.0
+    static let DEFAULT_TITLE = "DefaultTitle"
+    static let DEFAULT_DATE = "00.00.0000"
+    static let DEFAULT_NAME = "DefaultName"
+    static let DEFAULT_SURNAME = "DefaultSurame"
+    static let DEFAULT_IMAGE = "DefaultImage"
+    static let DEFAULT_LOCATION = "DefaultLocation"
+    static let DEFAULT_WELCOME_MESSAGE = "DefaultWM"
+
+    static let album: [Photo] = {
+        var photos: [Photo] = []
+        for i in 1...10 {
+            photos.append(contentsOf: [Photo(name: "p\(i%6)"), Photo(name: "groom"), Photo(name: "bride")])
+        }
+        return photos.shuffled()
+    }()
+
 }

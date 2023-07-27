@@ -108,12 +108,11 @@ struct CallKeyboardButton: View {
 }
 
 struct PinKeyboardAndField: View {
-    @ObservedObject var model = ViewModel(id: "1111")
+    @ObservedObject var model = ViewModel(id: "0")
     @State private var pin: String = ""
-    @State private var correctPIN: String = "1111"
     @State private var isCorrectPIN: Bool = false
     @State private var pinWarning: String = ""
-    let pinList = ["1111", "1112", "1113", "1114"]
+
     var body: some View {
         VStack {
             PINDisplay(pin: pin) // Display the PIN circles
@@ -139,12 +138,13 @@ struct PinKeyboardAndField: View {
         }
     }
 }
+
 /*
-struct PinKeyboardAndField_Previews: PreviewProvider {
+ struct PinKeyboardAndField_Previews: PreviewProvider {
     static var previews: some View {
         PinKeyboardAndField().background(AnimatedBackground())
     }
-}
-*/
+ }
+ */
 
 

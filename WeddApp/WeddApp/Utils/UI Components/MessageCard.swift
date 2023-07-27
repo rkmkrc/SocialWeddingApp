@@ -21,24 +21,18 @@ struct MessageCard: View {
                     .font(.headline)
                 Spacer()
             }
-            
             Text(message)
                 .font(.body)
                 .lineLimit(nil)
-            
             Divider()
-            
             HStack {
                 Button(action: {
-                    
                 }) {
                     Image(systemName: "heart")
                         .font(.title)
                         .foregroundColor(.gray)
                 }
-                
                 Spacer()
-                
                 Button(action: {
                 }) {
                     Image(systemName: "square.and.arrow.up")

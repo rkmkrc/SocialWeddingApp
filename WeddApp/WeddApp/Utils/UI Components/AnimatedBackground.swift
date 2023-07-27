@@ -9,11 +9,10 @@ import Foundation
 import SwiftUI
 
 struct AnimatedBackground: View {
-    var colorSet: Int = 0
-    let colorSetList: [[Color]] = [[Color.blue, Color.red, Color.purple, Color.pink, Color.red, Color.purple, Color.blue], [Color.yellow, Color.purple, Color.yellow]]
     @State var start = UnitPoint(x: 0, y: -2)
     @State var end = UnitPoint(x: 4, y: 0)
-    
+    var colorSet: Int = 0
+    let colorSetList: [[Color]] = [[Color.blue, Color.red, Color.purple, Color.pink, Color.red, Color.purple, Color.blue], [Color.yellow, Color.purple, Color.yellow]]
     let timer = Timer.publish(every: 1, on: .main, in: .default).autoconnect()
     var colors: [Color] {
         colorSetList[colorSet]

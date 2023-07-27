@@ -20,14 +20,13 @@ func createUser(userName: String, email: String, userType: String, phoneNumber: 
     let db = Firestore.firestore()
     let userCollection = db.collection("Users")
     let newUserDocument = userCollection.document()
-
     let user = User(userName: userName, email: email, userType: userType, phoneNumber: phoneNumber)
 
     newUserDocument.setData(user.toDictionary()) { error in
         if let error = error {
-            print("Error creating user: \(error.localizedDescription)")
+            processWeddingError(error: WeddingError.firestoreError(error.localizedDescription))
         } else {
-            print("User created successfully")
+            SuccessOperations.onSuccess(message: SuccessOperations.USER_CREATED)
         }
     }
 }

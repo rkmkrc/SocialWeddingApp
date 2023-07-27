@@ -10,5 +10,12 @@ extension Notification.Name {
     static let correctPINEntered = Notification.Name("correctPINEntered")
 }
 
-
+struct SuccessOperations {
+    static let DOC_SET = "Wedding document successfully set!"
+    static let USER_CREATED = "User created successfully!"
+    
+    static func onSuccess(message: String) {
+        print(message)
+    }
+}
 
