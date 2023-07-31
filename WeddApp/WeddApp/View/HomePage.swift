@@ -22,9 +22,8 @@ struct HomePage: View {
                 GalleryPage()
                 StoryPage()
             }
-            .navigationTitle(pin)
             .tabViewStyle(PageTabViewStyle())
-            //.navigationBarBackButtonHidden(true)
+            .navigationBarBackButtonHidden(true)
             .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .interactive))
             .edgesIgnoringSafeArea(.all)
         }

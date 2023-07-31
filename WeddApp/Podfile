@@ -9,6 +9,7 @@ target 'WeddApp' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'Firebase/Firestore'
+  pod 'FirebaseStorage'
   target 'WeddAppTests' do
     inherit! :search_paths
     # Pods for testing

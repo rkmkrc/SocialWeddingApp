@@ -10,6 +10,8 @@
 		3405401436F0A809F3C98313 /* Pods_WeddApp_WeddAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9DD3EAF1CBD3CACC12FFDF /* Pods_WeddApp_WeddAppUITests.framework */; };
 		4D8355E763F7148C5CD926A0 /* Pods_WeddApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A11A33B1957263BE421667 /* Pods_WeddApp.framework */; };
 		60509EE63DEB23DE66E382AC /* Pods_WeddAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 489568805C1953F203753049 /* Pods_WeddAppTests.framework */; };
+		7D0465A42A7684A200F45C20 /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0465A32A7684A200F45C20 /* FormViewModel.swift */; };
+		7D0465A82A77C9B900F45C20 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0465A72A77C9B900F45C20 /* ImagePicker.swift */; };
 		7D0F731B2A715C19005E66AF /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0F731A2A715C19005E66AF /* ViewModel.swift */; };
 		7D2979182A70025A00A7629E /* FirebaseFirestore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D2979172A70025A00A7629E /* FirebaseFirestore.framework */; };
 		7D29791A2A70027D00A7629E /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D2979192A70027D00A7629E /* FirebaseAuth.framework */; };
@@ -72,6 +74,8 @@
 		2CCBE7CB69625FC1AC86D025 /* Pods-WeddAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeddAppTests.release.xcconfig"; path = "Target Support Files/Pods-WeddAppTests/Pods-WeddAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		33A11A33B1957263BE421667 /* Pods_WeddApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeddApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		489568805C1953F203753049 /* Pods_WeddAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeddAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D0465A32A7684A200F45C20 /* FormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewModel.swift; sourceTree = "<group>"; };
+		7D0465A72A77C9B900F45C20 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		7D0F731A2A715C19005E66AF /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		7D2979172A70025A00A7629E /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D2979192A70027D00A7629E /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,6 +166,22 @@
 				489568805C1953F203753049 /* Pods_WeddAppTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7D0465A52A7688BF00F45C20 /* Form Page */ = {
+			isa = PBXGroup;
+			children = (
+				7D0465A32A7684A200F45C20 /* FormViewModel.swift */,
+			);
+			path = "Form Page";
+			sourceTree = "<group>";
+		};
+		7D0465A62A77C9AA00F45C20 /* Image Picker */ = {
+			isa = PBXGroup;
+			children = (
+				7D0465A72A77C9B900F45C20 /* ImagePicker.swift */,
+			);
+			path = "Image Picker";
 			sourceTree = "<group>";
 		};
 		7D0F73192A715C06005E66AF /* ViewModel */ = {
@@ -262,6 +282,7 @@
 		7D3056032A59C01E00AA761B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				7D0465A62A77C9AA00F45C20 /* Image Picker */,
 				7D2979252A702D4E00A7629E /* Custom Errors */,
 				7D90F8532A6728EA006A6FF6 /* UI Components */,
 				7D3056042A59C02D00AA761B /* Utilities.swift */,
@@ -273,6 +294,7 @@
 		7D3056082A5AD28500AA761B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7D0465A52A7688BF00F45C20 /* Form Page */,
 				7DAAEA242A6AF541006F801C /* OTP Page */,
 				7D30560D2A5AD8FD00AA761B /* HomePage.swift */,
 				7D3055D12A599F3B00AA761B /* IntroductionPage.swift */,
@@ -577,6 +599,8 @@
 				7D3056002A59BD9C00AA761B /* Models.swift in Sources */,
 				7D3056022A59BF2300AA761B /* TestModels.swift in Sources */,
 				7D3056072A59C0C600AA761B /* Constants.swift in Sources */,
+				7D0465A42A7684A200F45C20 /* FormViewModel.swift in Sources */,
+				7D0465A82A77C9B900F45C20 /* ImagePicker.swift in Sources */,
 				7DAAEA262A6AF558006F801C /* OtpScreen.swift in Sources */,
 				7DFA37B82A6D61C20056C490 /* User.swift in Sources */,
 			);

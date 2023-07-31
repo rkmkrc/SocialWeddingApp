@@ -16,6 +16,11 @@ struct OTPPage: View {
         NavigationView {
             GeometryReader { geometry in
                 VStack {
+                    Image("appLogo")
+                        .resizable()
+                        .scaleEffect(2)
+                        .aspectRatio(contentMode: .fit)
+                        .padding(Constants.IMAGE_PADDING)
                     Spacer()
                     Text("Passcode")
                         .font(.title)
