@@ -213,7 +213,7 @@ struct test: View {
         let fileRef = storageRef.child(path)
         
         // Upload data
-        let uploadTask = fileRef.putData(imageData!) { metadata, error in
+        fileRef.putData(imageData!) { metadata, error in
             
             if error == nil && metadata != nil {
                 // Save a referace to Firestore DB

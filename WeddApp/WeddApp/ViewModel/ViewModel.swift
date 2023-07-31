@@ -63,16 +63,10 @@ class ViewModel: ObservableObject {
     }
     
     
-    func createWedding(id: String, groom: Groom, bride: Bride, date: String, location: String, welcomeMessage: String) {
-        let wedding = Wedding(id: id,
-                              groom: groom,
-                              bride: bride,
-                              date: date,
-                              location: location,
-                              welcomeMessage: welcomeMessage,
-                              album: [])
+    func uploadWedding(groom: Groom, bride: Bride, wedding: Wedding) {
+        
         let weddingData = wedding.toDictionary()
-        db.collection("Weddings").document("\(wedding.id)").setData(weddingData) { error in
+        db.collection("Weddings").document("\(wedding.id ?? Constants.DEFAULT_WEDDING_ID)").setData(weddingData) { error in
             if let error = error {
                 processWeddingError(error: WeddingError.firestoreError(error.localizedDescription))
             } else {

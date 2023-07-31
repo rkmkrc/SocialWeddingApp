@@ -20,7 +20,8 @@ struct Constants {
     static let DEFAULT_IMAGE = "DefaultImage"
     static let DEFAULT_LOCATION = "DefaultLocation"
     static let DEFAULT_WELCOME_MESSAGE = "DefaultWM"
-
+    static let DEFAULT_WEDDING_ID = "9999"
+    
     static let album: [Photo] = {
         var photos: [Photo] = []
         for i in 1...10 {

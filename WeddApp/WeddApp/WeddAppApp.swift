@@ -18,7 +18,7 @@ struct WeddAppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            FormScreen()
+            OTPPage()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

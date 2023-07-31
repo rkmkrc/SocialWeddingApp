@@ -25,7 +25,7 @@ struct Wedding: Codable, Identifiable {
     let location: String?
     let welcomeMessage: String?
     var title: String {
-        return "\(self.groom?.name ?? Constants.DEFAULT_NAME) \u{2764} \(self.bride?.name ?? Constants.DEFAULT_NAME)"
+        return "\(self.groom?.name ?? Constants.DEFAULT_NAME) \n \u{2764} \n \(self.bride?.name ?? Constants.DEFAULT_NAME)"
     }
     
     init(id: String, groom: Groom, bride: Bride, date: String, location: String, welcomeMessage: String, album: [Photo]) {

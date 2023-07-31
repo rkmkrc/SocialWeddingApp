@@ -15816,7 +15816,7 @@
 		6472AC8DE6BEE5F9343A716014AE4301 /* percent.upb.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = percent.upb.h; path = "src/core/ext/upb-generated/envoy/type/v3/percent.upb.h"; sourceTree = "<group>"; };
 		6480327C54C310E5DACE25B3E813289C /* resolver.upbdefs.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = resolver.upbdefs.h; path = "src/core/ext/upbdefs-generated/envoy/config/core/v3/resolver.upbdefs.h"; sourceTree = "<group>"; };
 		648072CB1558F7A57975D42962254A72 /* trace_config.upbdefs.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = trace_config.upbdefs.c; path = "src/core/ext/upbdefs-generated/opencensus/proto/trace/v1/trace_config.upbdefs.c"; sourceTree = "<group>"; };
-		64918B1C3FD6C1BCE7A7ABE7B3B348DE /* Pods-WeddApp */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-WeddApp"; path = Pods_WeddApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		64918B1C3FD6C1BCE7A7ABE7B3B348DE /* Pods_WeddApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeddApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		64A561F8C820F48224094781EE9042DE /* stats_data.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = stats_data.h; path = src/core/lib/debug/stats_data.h; sourceTree = "<group>"; };
 		64AD777BC7AF70C23C01178C549780E3 /* internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = internal.h; path = src/crypto/fipsmodule/digest/internal.h; sourceTree = "<group>"; };
 		64AFA62CD48E50BDAB62E8292191398D /* status.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = status.h; path = include/grpc/impl/codegen/status.h; sourceTree = "<group>"; };
@@ -19281,7 +19281,7 @@
 				C1998E0D8085221AD87F89B614C10E52 /* GTMSessionFetcher.framework */,
 				0A9F46A999C47653013D3AD854352507 /* leveldb.framework */,
 				06FC5C9CF96D60C50FCD47D339C91951 /* nanopb.framework */,
-				64918B1C3FD6C1BCE7A7ABE7B3B348DE /* Pods-WeddApp */,
+				64918B1C3FD6C1BCE7A7ABE7B3B348DE /* Pods_WeddApp.framework */,
 				3A920728AEEEC08DD3127DE1D4B371CA /* Pods-WeddApp-WeddAppUITests */,
 				A3EA1BD46D065F30F1485AC868C5355B /* Pods-WeddAppTests */,
 				3347A1AB6546F0A3977529B8F199DC41 /* FBLPromises.framework */,
@@ -28661,7 +28661,7 @@
 			);
 			name = "Pods-WeddApp";
 			productName = Pods_WeddApp;
-			productReference = 64918B1C3FD6C1BCE7A7ABE7B3B348DE /* Pods-WeddApp */;
+			productReference = 64918B1C3FD6C1BCE7A7ABE7B3B348DE /* Pods_WeddApp.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		D2B5E7DCCBBFB32341D857D01211A1A3 /* nanopb */ = {
