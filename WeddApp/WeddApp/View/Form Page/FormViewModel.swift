@@ -109,6 +109,7 @@ struct PersonInfoSection: View {
                 } else {
                     Image(systemName: "person.fill") // Placeholder image if no image is selected
                         .resizable()
+                        .scaleEffect(0.5)
                         .frame(width: 120, height: 120)
                         .aspectRatio(contentMode: .fit)
                         .clipShape(Circle())
