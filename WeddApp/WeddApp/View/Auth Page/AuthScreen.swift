@@ -12,6 +12,8 @@ struct AuthenticationView: View {
     @State private var email = ""
     @State private var password = ""
     @State private var confirmPassword = ""
+    @State private var regionCode = "+90"
+    @State private var phoneNumber = ""
     @State private var isSignIn = true
     @State private var showAlert = false
     @State private var alertMessage = ""
@@ -26,7 +28,7 @@ struct AuthenticationView: View {
                     if isSignIn {
                         SignInView(email: $email, password: $password, showAlert: $showAlert, alertMessage: $alertMessage, isSignedIn: $isSignedIn, isLoading: $isLoading)
                     } else {
-                        SignUpView(email: $email, password: $password, confirmPassword: $confirmPassword, showAlert: $showAlert, alertMessage: $alertMessage, isSignedIn: $isSignedIn, isLoading: $isLoading)
+                        SignUpView(email: $email, password: $password, confirmPassword: $confirmPassword, regionCode: $regionCode, phoneNumber: $phoneNumber, showAlert: $showAlert, alertMessage: $alertMessage, isSignedIn: $isSignedIn, isLoading: $isLoading)
                     }
                     Spacer()
                     if isSignIn {

@@ -6,11 +6,25 @@
 //
 import Foundation
 import UIKit
+import SwiftUI
+import FirebaseAuth
 import FirebaseStorage
 import FirebaseFirestore
 
+
 extension Notification.Name {
     static let correctPINEntered = Notification.Name("correctPINEntered")
+}
+// An extension to limit text field inputs.
+extension Binding where Value == String {
+    func max(_ limit: Int) -> Self {
+        if self.wrappedValue.count > limit {
+            DispatchQueue.main.async {
+                self.wrappedValue = String(self.wrappedValue.dropLast())
+            }
+        }
+        return self
+    }
 }
 
 struct SuccessOperations {
@@ -27,6 +41,7 @@ func formatDateToString(date: Date) -> String {
     dateFormatter.dateFormat = "dd.MM.yyyy"
     return dateFormatter.string(from: date)
 }
+
 
 func uploadPhoto(image: UIImage?) {
     print("UPLOAD PHOTO \(image?.description)")
@@ -82,6 +97,35 @@ func retrieveImage(withURL imageURL: String, completion: @escaping (UIImage?) ->
         } else {
             // Failed to convert data to image
             completion(nil)
+        }
+    }
+}
+
+func generateUniqueID(completion: @escaping (String?, Error?) -> Void) {
+    let db = Firestore.firestore()
+    let usedIDsCollection = db.collection("UsedIDs")
+    
+    let randomID = String(format: "%04d", Int.random(in: 0..<10000))
+    
+    // Check if the generated ID is already in use
+    usedIDsCollection.document(randomID).getDocument { snapshot, error in
+        if let error = error {
+            completion(nil, error)
+            return
+        }
+        
+        if snapshot?.exists == true {
+            // The generated ID is already in use, try again
+            generateUniqueID(completion: completion)
+        } else {
+            // The generated ID is unique, add it to the "UsedIDs" collection and return it
+            usedIDsCollection.document(randomID).setData([:]) { error in
+                if let error = error {
+                    completion(nil, error)
+                } else {
+                    completion(randomID, nil)
+                }
+            }
         }
     }
 }

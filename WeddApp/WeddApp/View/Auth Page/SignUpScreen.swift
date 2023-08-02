@@ -12,6 +12,8 @@ struct SignUpView: View {
     @Binding var email: String
     @Binding var password: String
     @Binding var confirmPassword: String
+    @Binding var regionCode: String
+    @Binding var phoneNumber: String
     @Binding var showAlert: Bool
     @Binding var alertMessage: String
     @Binding var isSignedIn: Bool
@@ -36,7 +38,30 @@ struct SignUpView: View {
                 SecureField("Confirm Password", text: $confirmPassword)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(.horizontal)
-                
+                HStack {
+                    TextField("", text: $regionCode)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .keyboardType(.numberPad)
+                        .frame(width: 70) // Optional: Set a fixed width for the region code part
+                        .onAppear {
+                            // Optional: If you want to select the region code when the view appears
+                            DispatchQueue.main.async {
+                                let range = regionCode.index(regionCode.startIndex, offsetBy: 1)..<regionCode.endIndex
+                                regionCode = "+" + regionCode[range]
+                            }
+                        }
+                    Spacer() // 1:3 ratio spacer
+                    TextField("555 555 55 55", text: $phoneNumber.max(10))
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .keyboardType(.numberPad)
+                    
+                }.padding(.horizontal)
+                Button("FillAuto"){
+                    email = "a@a.com"
+                    password = "aaaaaa"
+                    confirmPassword = "aaaaaa"
+                    phoneNumber = "1111111111"
+                }
                 Button(action: {
                     // Handle sign-up action here
                     if !isValidEmail(email) {
@@ -58,6 +83,7 @@ struct SignUpView: View {
                             } else {
                                 // Sign-up successful, perform any necessary actions here
                                 isSignedIn = true
+                                createUser(email: email, userType: "Customer", phoneNumber: "\(regionCode)\(phoneNumber)")
                                 print("SignedUp")
                             }
                         }
@@ -69,10 +95,10 @@ struct SignUpView: View {
                         .frame(maxWidth: .infinity)
                         .background(Color.blue)
                         .cornerRadius(10)
-                    
                 }
                 .padding(.horizontal)
             }
         }
     }
 }
+

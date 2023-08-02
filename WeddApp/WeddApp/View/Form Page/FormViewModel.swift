@@ -50,21 +50,33 @@ struct FormScreen: View {
     
     private func tapOnSave() {
         // Check fields
-        
-        let groom = Groom(name: groomName, surname: groomSurname, image: "groom")
-        let bride = Bride(name: brideName, surname: brideSurname, image: "bride")
-        let wedding = Wedding(id: "0003",
-                              groom: groom,
-                              bride: bride,
-                              date: formatDateToString(date: weddingDate),
-                              location: location,
-                              welcomeMessage: welcomeMessage,
-                              album: [])
-        // Upload request
-        
-        model.uploadWedding(groom: groom, bride: bride, wedding: wedding)
-        uploadPhoto(image: groomImage)
-        uploadPhoto(image: brideImage)
+        print("TAPPED")
+        var weddingID = Constants.DEFAULT_WEDDING_ID
+        model.getWeddingIDFromUser { uniqueID, error in
+            print(1)
+            if error == nil && uniqueID != nil {
+                print(2)
+                weddingID = uniqueID!
+                let groom = Groom(name: groomName, surname: groomSurname, image: "groom")
+                let bride = Bride(name: brideName, surname: brideSurname, image: "bride")
+                let wedding = Wedding(id: weddingID,
+                                      groom: groom,
+                                      bride: bride,
+                                      date: formatDateToString(date: weddingDate),
+                                      location: location,
+                                      welcomeMessage: welcomeMessage,
+                                      album: [])
+                // Upload request
+                
+                model.uploadWedding(groom: groom, bride: bride, wedding: wedding)
+                uploadPhoto(image: groomImage)
+                uploadPhoto(image: brideImage)
+            } else {
+                print(3)
+                print("Error == \(error?.localizedDescription)")
+                // Handle error
+            }
+        }
     }
 }
 

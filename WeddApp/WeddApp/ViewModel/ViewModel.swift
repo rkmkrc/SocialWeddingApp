@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseFirestore
+import FirebaseAuth
 
 class ViewModel: ObservableObject {
     var id: String = ""
@@ -61,19 +62,25 @@ class ViewModel: ObservableObject {
             }
         }
     }
-    
-    
+
     func uploadWedding(groom: Groom, bride: Bride, wedding: Wedding) {
-        
         let weddingData = wedding.toDictionary()
-        db.collection("Weddings").document("\(wedding.id ?? Constants.DEFAULT_WEDDING_ID)").setData(weddingData) { error in
-            if let error = error {
-                processWeddingError(error: WeddingError.firestoreError(error.localizedDescription))
-            } else {
-                SuccessOperations.onSuccess(message: SuccessOperations.DOC_SET)
+        
+            // Use the user's UID as the document ID for the wedding
+        if let id = wedding.id {
+            db.collection("Weddings").document(id).setData(weddingData) { error in
+                if let error = error {
+                    processWeddingError(error: WeddingError.firestoreError(error.localizedDescription))
+                } else {
+                    SuccessOperations.onSuccess(message: SuccessOperations.DOC_SET)
+                }
             }
+        } else {
+            print("Error - wedding id is nil!!!")
         }
+        
     }
+
     
     func isWeddingExist(id: String, completion: @escaping (Bool) -> Void) {
         let docRef = db.collection("Weddings").document(id)
@@ -85,4 +92,35 @@ class ViewModel: ObservableObject {
             }
         }
     }
+    
+    func getWeddingIDFromUser(completion: @escaping (String?, Error?) -> Void) {
+        if let user = Auth.auth().currentUser {
+            let userID = user.uid
+            
+            let docRef = db.collection("Users").document(userID)
+            docRef.getDocument { (document, error) in
+                if let error = error {
+                    completion(nil, error) // Call the completion closure with the error
+                    return
+                }
+                
+                if let document = document, document.exists {
+                    // Extract groom and bride data from the document
+                    if let weddingID = document["weddingID"] as? String {
+                        DispatchQueue.main.async {
+                            completion(weddingID, nil) // Call the completion closure with the retrieved weddingID
+                        }
+                    } else {
+                        let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "No weddingID found in the document."])
+                        completion(nil, error) // Call the completion closure with the error
+                    }
+                } else {
+                    let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "There is no wedding ID associated with this user ID."])
+                    completion(nil, error) // Call the completion closure with the error
+                }
+            }
+        }
+    }
+
+        
 }
