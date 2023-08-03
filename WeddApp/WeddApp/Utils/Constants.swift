@@ -21,6 +21,9 @@ struct Constants {
     static let DEFAULT_LOCATION = "DefaultLocation"
     static let DEFAULT_WELCOME_MESSAGE = "DefaultWM"
     static let DEFAULT_WEDDING_ID = "9999"
+    static let GROOM_SUBFOLDER = "groom"
+    static let BRIDE_SUBFOLDER = "bride"
+    static let DEFAULT_IMAGE_URL = ""
     
     static let album: [Photo] = {
         var photos: [Photo] = []

@@ -187,7 +187,9 @@ struct test: View {
                 }
             }
         }.onAppear {
-            retrieveImages()
+            retrieveImage(withURL: "images/0695/bride/E3C355CA-A0A6-401C-82B5-A13846D7FF7E.png") { image in
+                self.image = image
+            }
         }
     }
     

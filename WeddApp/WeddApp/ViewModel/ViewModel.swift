@@ -19,6 +19,24 @@ class ViewModel: ObservableObject {
         self.id = id
     }
     
+    func getImageUrlOf(person: String, completion: @escaping (String?, Error?) -> Void) {
+        let docRef = db.collection("Images").document(id)
+        docRef.getDocument { (document, error) in
+            if let error = error {
+                processWeddingError(error: .documentError(error.localizedDescription))
+                completion(nil, error)
+                return
+            }
+            
+            if let document = document, document.exists {
+                let imageUrl = document["\(person)Url"] as? String ?? Constants.DEFAULT_IMAGE_URL
+                completion(imageUrl, nil)
+            } else {
+                completion(Constants.DEFAULT_IMAGE_URL, nil)
+            }
+        }
+    }
+
     // Fetching wedding from Firebase
     func getWedding() {
         let docRef = db.collection("Weddings").document(id)

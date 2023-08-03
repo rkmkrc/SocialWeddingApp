@@ -69,8 +69,8 @@ struct FormScreen: View {
                 // Upload request
                 
                 model.uploadWedding(groom: groom, bride: bride, wedding: wedding)
-                uploadPhoto(image: groomImage)
-                uploadPhoto(image: brideImage)
+                uploadPhoto(image: groomImage, weddingID: weddingID, subfolder: Constants.GROOM_SUBFOLDER)
+                uploadPhoto(image: brideImage, weddingID: weddingID, subfolder: Constants.BRIDE_SUBFOLDER)
             } else {
                 print(3)
                 print("Error == \(error?.localizedDescription)")

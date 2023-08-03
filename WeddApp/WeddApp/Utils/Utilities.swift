@@ -43,8 +43,8 @@ func formatDateToString(date: Date) -> String {
 }
 
 
-func uploadPhoto(image: UIImage?) {
-    print("UPLOAD PHOTO \(image?.description)")
+func uploadPhoto(image: UIImage?, weddingID: String, subfolder: String) {
+    print("UPLOAD PHOTO \(String(describing: image?.description ?? ""))")
     guard image != nil else {
         print("image nil")
         return
@@ -61,7 +61,7 @@ func uploadPhoto(image: UIImage?) {
     }
     
     // Specify the file path
-    let path = "images/\(UUID().uuidString).png"
+    let path = "images/\(weddingID)/\(subfolder)/\(UUID().uuidString).png"
     let fileRef = storageRef.child(path)
     
     // Upload data
@@ -69,10 +69,26 @@ func uploadPhoto(image: UIImage?) {
         
         if error == nil && metadata != nil {
             // Save a referace to Firestore DB
-            print("----------")
+            print("Image of \(weddingID)'s \(subfolder) succesfully uploaded.")
             let db = Firestore.firestore()
-            db.collection("Images").document().setData(["url": path])
+            let collectionName = "Images"
+            let subfolderField = "\(subfolder)Url"
             
+            let documentReference = db.collection(collectionName).document(weddingID)
+
+            // Create a dictionary with the new field to add (subfolderUrl)
+            let data = [
+                subfolderField: path
+            ]
+
+            // Use updateData to add the new field to the document
+            documentReference.setData(data, merge: true) { error in
+                if let error = error {
+                    print("Error setting URL: \(error.localizedDescription)")
+                } else {
+                    print("Image of \(weddingID)'s \(subfolder) URL successfully set to DB.")
+                }
+            }
         }
     }
 }

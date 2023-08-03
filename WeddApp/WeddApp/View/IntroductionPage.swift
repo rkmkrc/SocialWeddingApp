@@ -9,13 +9,15 @@ import SwiftUI
 
 struct IntroductionPage: View {
     @ObservedObject var model: ViewModel
+    @State var groomImage: UIImage?
+    @State var brideImage: UIImage?
     
     var body: some View {
         VStack(alignment: .center) {
             AnimatedText(title: model.wed?.title ?? Constants.DEFAULT_TITLE)
             HStack {
                 VStack {
-                    Image(model.wed?.groom?.image ?? Constants.PLACEHOLDER_GROOM_IMAGE)
+                    Image(uiImage: groomImage ?? UIImage())
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .clipShape(Circle())
@@ -27,7 +29,7 @@ struct IntroductionPage: View {
                     Text(model.wed?.groom?.name ?? Constants.DEFAULT_NAME).font(.title3).fontWeight(.light)
                 }
                 VStack {
-                    Image(model.wed?.bride?.image ?? Constants.PLACEHOLDER_BRIDE_IMAGE)
+                    Image(uiImage: brideImage ?? UIImage())
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .clipShape(Circle())
@@ -47,6 +49,39 @@ struct IntroductionPage: View {
             Spacer()
         }.background(AnimatedBackground(colorSet: 0).blur(radius: 190))
             .padding(.top, Constants.TOP_PADDING)
+            .onAppear() {
+                
+                
+                model.getImageUrlOf(person: "groom") { url, error in
+                    if let error = error {
+                        print("Error in getting url of Image = \(error)")
+                    } else if let url = url {
+                        print("Groom's Image URL: \(url)")
+                        retrieveImage(withURL: url, completion: { image in
+                            if let image = image {
+                                self.groomImage = image
+                            }
+                        })
+                    }
+                }
+                
+                model.getImageUrlOf(person: "bride") { url, error in
+                    if let error = error {
+                        print("Error in getting url of Image = \(error)")
+                    } else if let url = url {
+                        print("Groom's Image URL: \(url)")
+                        retrieveImage(withURL: url, completion: { image in
+                            if let image = image {
+                                self.brideImage = image
+                            }
+                        })
+                    }
+                }
+                
+                
+                
+                
+            }
     }
     init(model: ViewModel) {
         self.model = model
