@@ -19,9 +19,7 @@ struct GalleryPage: View {
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
-    
     @State private var selectedPhoto: Photo? = nil // Track the selected photo
-    
     var body: some View {
         VStack(alignment: .center) {
             Spacer()
@@ -65,7 +63,6 @@ struct GalleryFullScreenView: View {
     @GestureState private var dragState = DragState.inactive
     
     private let dragThreshold: CGFloat = 150.0
-    
     var body: some View {
         GeometryReader { geometry in
             VStack {

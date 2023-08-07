@@ -11,11 +11,9 @@ import Firebase
 @main
 struct WeddAppApp: App {
     let persistenceController = PersistenceController.shared
-    
     init() {
         FirebaseApp.configure()
     }
-    
     var body: some Scene {
         WindowGroup {
             OTPPage()

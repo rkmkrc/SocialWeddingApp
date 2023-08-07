@@ -1,5 +1,4 @@
-
-//
+//  This file is using for testing purposes. It can be unorganized and not up to date.
 //  PinKeyboardAndField.swift
 //  WeddApp
 //
@@ -187,7 +186,7 @@ struct test: View {
                 }
             }
         }.onAppear {
-            retrieveImage(withURL: "images/0695/bride/E3C355CA-A0A6-401C-82B5-A13846D7FF7E.png") { image in
+            retrieveImage(withURL: "") { image in
                 self.image = image
             }
         }

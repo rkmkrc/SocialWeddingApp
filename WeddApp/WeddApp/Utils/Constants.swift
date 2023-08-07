@@ -13,6 +13,12 @@ struct Constants {
     static let TEXT_PADDING = 10.0
     static let IMAGE_PADDING = 20.0
     static let TOP_PADDING = 30.0
+    static let PERSON_IMAGE_WIDTH = 140.0
+    static let PERSON_IMAGE_HEIGHT = 140.0
+    static let IMAGES_COLLECTION = "Images"
+    static let USERS_COLLECTION = "User"
+    static let USED_IDS_COLLECTION = "UsedIDs"
+    static let WEDDINGS_COLLECTION = "Weddings"
     static let DEFAULT_TITLE = "DefaultTitle"
     static let DEFAULT_DATE = "00.00.0000"
     static let DEFAULT_NAME = "DefaultName"
@@ -25,6 +31,16 @@ struct Constants {
     static let BRIDE_SUBFOLDER = "bride"
     static let DEFAULT_IMAGE_URL = ""
     
+    struct TestUser {
+        static let email = "a@a.com"
+        static let password = "aaaaaa"
+        static let phoneNumber = "1111111111"
+    }
+    struct AlertMessages {
+        static let enterValidEmail = "Please enter a valid email address."
+        static let passwordShouldBe = "Password should be at least 6 characters long."
+        static let passwordsNotMatched = "Passwords do not match."
+    }
     static let album: [Photo] = {
         var photos: [Photo] = []
         for i in 1...10 {
@@ -32,5 +48,5 @@ struct Constants {
         }
         return photos.shuffled()
     }()
-
+    
 }

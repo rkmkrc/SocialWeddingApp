@@ -20,14 +20,13 @@ class ViewModel: ObservableObject {
     }
     
     func getImageUrlOf(person: String, completion: @escaping (String?, Error?) -> Void) {
-        let docRef = db.collection("Images").document(id)
+        let docRef = db.collection(Constants.IMAGES_COLLECTION).document(id)
         docRef.getDocument { (document, error) in
             if let error = error {
                 processWeddingError(error: .documentError(error.localizedDescription))
                 completion(nil, error)
                 return
             }
-            
             if let document = document, document.exists {
                 let imageUrl = document["\(person)Url"] as? String ?? Constants.DEFAULT_IMAGE_URL
                 completion(imageUrl, nil)
@@ -36,35 +35,31 @@ class ViewModel: ObservableObject {
             }
         }
     }
-
+    
     // Fetching wedding from Firebase
     func getWedding() {
-        let docRef = db.collection("Weddings").document(id)
+        let docRef = db.collection(Constants.WEDDINGS_COLLECTION).document(id)
         docRef.getDocument { (document, error) in
             if let error = error {
                 processWeddingError(error: .documentError(error.localizedDescription))
                 return
             }
-            
             if let document = document, document.exists {
                 DispatchQueue.main.async {
                     // Extract groom and bride data from the document
                     let groomData = document["groom"] as? [String: Any] ?? [:]
                     let brideData = document["bride"] as? [String: Any] ?? [:]
-                    
                     // Create Groom and Bride objects
                     let groom = Groom(
                         name: groomData["name"] as? String ?? Constants.DEFAULT_NAME,
                         surname: groomData["surname"] as? String ?? Constants.DEFAULT_SURNAME,
                         image: groomData["image"] as? String ?? Constants.PLACEHOLDER_BRIDE_IMAGE
                     )
-                    
                     let bride = Bride(
                         name: brideData["name"] as? String ?? Constants.DEFAULT_NAME,
                         surname: brideData["surname"] as? String ?? Constants.DEFAULT_SURNAME,
                         image: brideData["image"] as? String ?? Constants.PLACEHOLDER_BRIDE_IMAGE
                     )
-                    
                     self.wed = Wedding(
                         id: document.documentID,
                         groom: groom,
@@ -80,13 +75,13 @@ class ViewModel: ObservableObject {
             }
         }
     }
-
+    
     func uploadWedding(groom: Groom, bride: Bride, wedding: Wedding) {
         let weddingData = wedding.toDictionary()
         
-            // Use the user's UID as the document ID for the wedding
+        // Use the user's UID as the document ID for the wedding
         if let id = wedding.id {
-            db.collection("Weddings").document(id).setData(weddingData) { error in
+            db.collection(Constants.WEDDINGS_COLLECTION).document(id).setData(weddingData) { error in
                 if let error = error {
                     processWeddingError(error: WeddingError.firestoreError(error.localizedDescription))
                 } else {
@@ -94,14 +89,13 @@ class ViewModel: ObservableObject {
                 }
             }
         } else {
-            print("Error - wedding id is nil!!!")
+            processWeddingError(error: .documentError("Error: Wedding id is nil!"))
         }
         
     }
-
     
     func isWeddingExist(id: String, completion: @escaping (Bool) -> Void) {
-        let docRef = db.collection("Weddings").document(id)
+        let docRef = db.collection(Constants.WEDDINGS_COLLECTION).document(id)
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
                 completion(true)
@@ -115,7 +109,7 @@ class ViewModel: ObservableObject {
         if let user = Auth.auth().currentUser {
             let userID = user.uid
             
-            let docRef = db.collection("Users").document(userID)
+            let docRef = db.collection(Constants.USERS_COLLECTION).document(userID)
             docRef.getDocument { (document, error) in
                 if let error = error {
                     completion(nil, error) // Call the completion closure with the error
@@ -139,6 +133,4 @@ class ViewModel: ObservableObject {
             }
         }
     }
-
-        
 }

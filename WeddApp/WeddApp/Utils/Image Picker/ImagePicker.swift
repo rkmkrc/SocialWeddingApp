@@ -21,7 +21,6 @@ struct ImagePicker: UIViewControllerRepresentable {
     }
     
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-        
     }
     
     func makeCoordinator() -> Coordinator {
@@ -35,7 +34,6 @@ class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationContro
     init(_ picker: ImagePicker) {
         self.parent = picker
     }
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {

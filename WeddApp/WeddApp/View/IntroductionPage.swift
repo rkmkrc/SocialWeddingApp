@@ -19,6 +19,7 @@ struct IntroductionPage: View {
                 VStack {
                     Image(uiImage: groomImage ?? UIImage())
                         .resizable()
+                        .frame(width: Constants.PERSON_IMAGE_WIDTH, height: Constants.PERSON_IMAGE_HEIGHT)
                         .aspectRatio(contentMode: .fit)
                         .clipShape(Circle())
                         .overlay(
@@ -31,6 +32,7 @@ struct IntroductionPage: View {
                 VStack {
                     Image(uiImage: brideImage ?? UIImage())
                         .resizable()
+                        .frame(width: Constants.PERSON_IMAGE_WIDTH, height: Constants.PERSON_IMAGE_HEIGHT)
                         .aspectRatio(contentMode: .fit)
                         .clipShape(Circle())
                         .overlay(
@@ -50,37 +52,30 @@ struct IntroductionPage: View {
         }.background(AnimatedBackground(colorSet: 0).blur(radius: 190))
             .padding(.top, Constants.TOP_PADDING)
             .onAppear() {
-                
-                
                 model.getImageUrlOf(person: "groom") { url, error in
                     if let error = error {
-                        print("Error in getting url of Image = \(error)")
+                        processWeddingError(error: WeddingError.imageGettingError(error.localizedDescription))
                     } else if let url = url {
-                        print("Groom's Image URL: \(url)")
                         retrieveImage(withURL: url, completion: { image in
                             if let image = image {
                                 self.groomImage = image
+                                SuccessOperations.onSuccess(message: SuccessOperations.IMAGE_FETCHED)
                             }
                         })
                     }
                 }
-                
                 model.getImageUrlOf(person: "bride") { url, error in
                     if let error = error {
-                        print("Error in getting url of Image = \(error)")
+                        processWeddingError(error: WeddingError.imageGettingError(error.localizedDescription))
                     } else if let url = url {
-                        print("Groom's Image URL: \(url)")
                         retrieveImage(withURL: url, completion: { image in
                             if let image = image {
                                 self.brideImage = image
+                                SuccessOperations.onSuccess(message: SuccessOperations.IMAGE_FETCHED)
                             }
                         })
                     }
                 }
-                
-                
-                
-                
             }
     }
     init(model: ViewModel) {

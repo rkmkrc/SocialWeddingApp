@@ -50,12 +50,9 @@ struct FormScreen: View {
     
     private func tapOnSave() {
         // Check fields
-        print("TAPPED")
         var weddingID = Constants.DEFAULT_WEDDING_ID
         model.getWeddingIDFromUser { uniqueID, error in
-            print(1)
             if error == nil && uniqueID != nil {
-                print(2)
                 weddingID = uniqueID!
                 let groom = Groom(name: groomName, surname: groomSurname, image: "groom")
                 let bride = Bride(name: brideName, surname: brideSurname, image: "bride")
@@ -67,14 +64,11 @@ struct FormScreen: View {
                                       welcomeMessage: welcomeMessage,
                                       album: [])
                 // Upload request
-                
                 model.uploadWedding(groom: groom, bride: bride, wedding: wedding)
                 uploadPhoto(image: groomImage, weddingID: weddingID, subfolder: Constants.GROOM_SUBFOLDER)
                 uploadPhoto(image: brideImage, weddingID: weddingID, subfolder: Constants.BRIDE_SUBFOLDER)
             } else {
-                print(3)
-                print("Error == \(error?.localizedDescription)")
-                // Handle error
+                processWeddingError(error: WeddingError.firestoreError(error?.localizedDescription ?? "Upload Error"))
             }
         }
     }
@@ -94,7 +88,6 @@ extension View {
 }
 
 struct PersonInfoSection: View {
-    
     var parent: FormScreen?
     var sectionTitle: String
     var personName: Binding<String>
@@ -164,7 +157,7 @@ struct WeddingInfoSection: View {
 
 class ImagePickerManager: ObservableObject {
     @Published var selectedImage: UIImage?
-
+    
     func clearImage() {
         selectedImage = nil
     }

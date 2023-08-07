@@ -23,26 +23,23 @@ struct SignInView: View {
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .padding(.bottom, 20)
-                
                 TextField("Email", text: $email)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(.horizontal)
-                
                 SecureField("Password", text: $password)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(.horizontal)
                 Button("FillAuto"){
-                    email = "a@a.com"
-                    password = "aaaaaa"
+                    email = Constants.TestUser.email
+                    password = Constants.TestUser.password
                 }
                 Button(action: {
-                    // Handle sign-in action here
                     if !isValidEmail(email) {
                         showAlert = true
-                        alertMessage = "Please enter a valid email address."
+                        alertMessage = Constants.AlertMessages.enterValidEmail
                     } else if password.count < 6 {
                         showAlert = true
-                        alertMessage = "Password should be at least 6 characters long."
+                        alertMessage = Constants.AlertMessages.passwordShouldBe
                     } else {
                         isLoading = true
                         signIn(withEmail: email, password: password) { result, error in
@@ -51,9 +48,8 @@ struct SignInView: View {
                                 showAlert = true
                                 alertMessage = "Sign-in failed. \(error!.localizedDescription)"
                             } else {
-                                // Sign-in successful, perform any necessary actions here
-                                print("SignedIn")
                                 isSignedIn = true
+                                SuccessOperations.onSuccess(message: SuccessOperations.SIGNED_IN)
                             }
                         }
                     }
@@ -64,7 +60,6 @@ struct SignInView: View {
                         .frame(maxWidth: .infinity)
                         .background(Color.blue)
                         .cornerRadius(10)
-                    
                 }
                 .padding(.horizontal)
             }

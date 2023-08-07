@@ -30,8 +30,23 @@ extension Binding where Value == String {
 struct SuccessOperations {
     static let DOC_SET = "Wedding document successfully set!"
     static let USER_CREATED = "User created successfully!"
+    static let SIGNED_IN = "Signed In"
+    static let SIGNED_UP = "Signed Up"
+    static let IMAGE_FETCHED = "Image fetched successfully."
+    static let IMAGE_UPLOADED = "Image uploaded successfully."
+    static let IMAGE_URL_UPLOADED_TO_DB = "Image URL successfully set to DB."
     
     static func onSuccess(message: String) {
+        print(message)
+    }
+}
+
+struct OngoingOperations {
+    static let PHOTO_UPLOADING = "Uploading photo."
+    static let IMAGE_NIL = "Image is nil."
+    static let IMAGE_DATA_NIL = "Image data is nil."
+    
+    static func inProgress(message: String) {
         print(message)
     }
 }
@@ -42,11 +57,10 @@ func formatDateToString(date: Date) -> String {
     return dateFormatter.string(from: date)
 }
 
-
 func uploadPhoto(image: UIImage?, weddingID: String, subfolder: String) {
-    print("UPLOAD PHOTO \(String(describing: image?.description ?? ""))")
+    OngoingOperations.inProgress(message: OngoingOperations.PHOTO_UPLOADING)
     guard image != nil else {
-        print("image nil")
+        OngoingOperations.inProgress(message: OngoingOperations.IMAGE_NIL)
         return
     }
     // Create storage reference
@@ -56,7 +70,7 @@ func uploadPhoto(image: UIImage?, weddingID: String, subfolder: String) {
     let imageData = image!.pngData()
     
     guard imageData != nil else {
-        print("turned data nil")
+        OngoingOperations.inProgress(message: OngoingOperations.IMAGE_DATA_NIL)
         return
     }
     
@@ -69,24 +83,25 @@ func uploadPhoto(image: UIImage?, weddingID: String, subfolder: String) {
         
         if error == nil && metadata != nil {
             // Save a referace to Firestore DB
+            SuccessOperations.onSuccess(message: SuccessOperations.IMAGE_UPLOADED)
             print("Image of \(weddingID)'s \(subfolder) succesfully uploaded.")
             let db = Firestore.firestore()
             let collectionName = "Images"
             let subfolderField = "\(subfolder)Url"
             
             let documentReference = db.collection(collectionName).document(weddingID)
-
+            
             // Create a dictionary with the new field to add (subfolderUrl)
             let data = [
                 subfolderField: path
             ]
-
+            
             // Use updateData to add the new field to the document
             documentReference.setData(data, merge: true) { error in
                 if let error = error {
-                    print("Error setting URL: \(error.localizedDescription)")
+                    processWeddingError(error: WeddingError.urlError(error.localizedDescription))
                 } else {
-                    print("Image of \(weddingID)'s \(subfolder) URL successfully set to DB.")
+                    SuccessOperations.onSuccess(message: SuccessOperations.IMAGE_URL_UPLOADED_TO_DB)
                 }
             }
         }
@@ -100,7 +115,7 @@ func retrieveImage(withURL imageURL: String, completion: @escaping (UIImage?) ->
     fileRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
         if let error = error {
             // Handle the error if there is any
-            print("Error retrieving image: \(error.localizedDescription)")
+            processWeddingError(error: WeddingError.imageGettingError(error.localizedDescription))
             completion(nil)
             return
         }
@@ -109,9 +124,11 @@ func retrieveImage(withURL imageURL: String, completion: @escaping (UIImage?) ->
             // Image retrieved successfully
             DispatchQueue.main.async {
                 completion(image)
+                SuccessOperations.onSuccess(message: SuccessOperations.IMAGE_FETCHED)
             }
         } else {
             // Failed to convert data to image
+            processWeddingError(error: WeddingError.dataToImageError(error?.localizedDescription ?? ""))
             completion(nil)
         }
     }
@@ -119,7 +136,7 @@ func retrieveImage(withURL imageURL: String, completion: @escaping (UIImage?) ->
 
 func generateUniqueID(completion: @escaping (String?, Error?) -> Void) {
     let db = Firestore.firestore()
-    let usedIDsCollection = db.collection("UsedIDs")
+    let usedIDsCollection = db.collection(Constants.USED_IDS_COLLECTION)
     
     let randomID = String(format: "%04d", Int.random(in: 0..<10000))
     
@@ -129,7 +146,6 @@ func generateUniqueID(completion: @escaping (String?, Error?) -> Void) {
             completion(nil, error)
             return
         }
-        
         if snapshot?.exists == true {
             // The generated ID is already in use, try again
             generateUniqueID(completion: completion)
