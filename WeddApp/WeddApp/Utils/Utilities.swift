@@ -57,19 +57,28 @@ func formatDateToString(date: Date) -> String {
     return dateFormatter.string(from: date)
 }
 
-func uploadPhoto(image: UIImage?, weddingID: String, subfolder: String) {
+func uploadGallery(selectedImages: [UIImage]?, weddingID: String, subfolder: String) {
+    if let selectedImages = selectedImages {
+        for (index, image) in selectedImages.enumerated() {
+            uploadPhoto(image: image, weddingID: weddingID, subfolder: subfolder, isGallery: true, photoIndex: index + 1)
+        }
+    } else {
+        print("Gallery images are nil.")
+    }
+}
+
+func uploadPhoto(image: UIImage?, weddingID: String, subfolder: String, isGallery: Bool = false, photoIndex: Int = 0) {
     OngoingOperations.inProgress(message: OngoingOperations.PHOTO_UPLOADING)
-    guard image != nil else {
+    guard let image = image else {
         OngoingOperations.inProgress(message: OngoingOperations.IMAGE_NIL)
         return
     }
+    
     // Create storage reference
     let storageRef = Storage.storage().reference()
     
     // Turn image to data
-    let imageData = image!.pngData()
-    
-    guard imageData != nil else {
+    guard let imageData = image.pngData() else {
         OngoingOperations.inProgress(message: OngoingOperations.IMAGE_DATA_NIL)
         return
     }
@@ -79,34 +88,49 @@ func uploadPhoto(image: UIImage?, weddingID: String, subfolder: String) {
     let fileRef = storageRef.child(path)
     
     // Upload data
-    fileRef.putData(imageData!) { metadata, error in
-        
+    fileRef.putData(imageData) { metadata, error in
         if error == nil && metadata != nil {
-            // Save a referace to Firestore DB
             SuccessOperations.onSuccess(message: SuccessOperations.IMAGE_UPLOADED)
-            print("Image of \(weddingID)'s \(subfolder) succesfully uploaded.")
+            print("Image of \(weddingID)'s \(subfolder) successfully uploaded.")
             let db = Firestore.firestore()
-            let collectionName = "Images"
-            let subfolderField = "\(subfolder)Url"
-            
-            let documentReference = db.collection(collectionName).document(weddingID)
-            
-            // Create a dictionary with the new field to add (subfolderUrl)
-            let data = [
-                subfolderField: path
-            ]
-            
-            // Use updateData to add the new field to the document
-            documentReference.setData(data, merge: true) { error in
-                if let error = error {
-                    processWeddingError(error: WeddingError.urlError(error.localizedDescription))
-                } else {
-                    SuccessOperations.onSuccess(message: SuccessOperations.IMAGE_URL_UPLOADED_TO_DB)
+            if isGallery {
+                let galleryCollectionName = "Gallery"
+                let photoDocumentName = "photo\(photoIndex)"
+                let galleryDocumentReference = db.collection(galleryCollectionName).document(weddingID)
+
+                let galleryData = [
+                    photoDocumentName: path
+                ]
+
+                galleryDocumentReference.setData(galleryData, merge: true) { error in
+                    if let error = error {
+                        processWeddingError(error: WeddingError.urlError(error.localizedDescription))
+                    } else {
+                        SuccessOperations.onSuccess(message: SuccessOperations.IMAGE_URL_UPLOADED_TO_DB)
+                    }
+                }
+            } else {
+                let collectionName = "Images"
+                let subfolderField = "\(subfolder)Url"
+                
+                let documentReference = db.collection(collectionName).document(weddingID)
+                
+                let data = [
+                    subfolderField: path
+                ]
+                
+                documentReference.setData(data, merge: true) { error in
+                    if let error = error {
+                        processWeddingError(error: WeddingError.urlError(error.localizedDescription))
+                    } else {
+                        SuccessOperations.onSuccess(message: SuccessOperations.IMAGE_URL_UPLOADED_TO_DB)
+                    }
                 }
             }
         }
     }
 }
+
 
 func retrieveImage(withURL imageURL: String, completion: @escaping (UIImage?) -> Void) {
     let storageReference = Storage.storage().reference()

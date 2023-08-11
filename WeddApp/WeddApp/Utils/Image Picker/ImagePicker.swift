@@ -12,6 +12,8 @@ import SwiftUI
 struct ImagePicker: UIViewControllerRepresentable {
     @Binding var isPickerShowing: Bool
     @Binding var selectedImage: UIImage?
+    @Binding var selectedImages: [UIImage]?
+    var forSingleImage: Bool
     
     func makeUIViewController(context: Context) -> some UIViewController {
         let imagePicker = UIImagePickerController()
@@ -37,9 +39,16 @@ class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationContro
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            DispatchQueue.main.async {
-                self.parent.selectedImage = image
-                // Success
+            if parent.forSingleImage {
+                DispatchQueue.main.async {
+                    self.parent.selectedImage = image
+                    // Success
+                }
+            } else {
+                parent.selectedImages!.append(image)
+                picker.dismiss(animated: true) {
+                    self.parent.isPickerShowing = false
+                }
             }
         }
         parent.isPickerShowing = false

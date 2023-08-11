@@ -16,7 +16,7 @@ struct Constants {
     static let PERSON_IMAGE_WIDTH = 140.0
     static let PERSON_IMAGE_HEIGHT = 140.0
     static let IMAGES_COLLECTION = "Images"
-    static let USERS_COLLECTION = "User"
+    static let USERS_COLLECTION = "Users"
     static let USED_IDS_COLLECTION = "UsedIDs"
     static let WEDDINGS_COLLECTION = "Weddings"
     static let DEFAULT_TITLE = "DefaultTitle"
@@ -29,6 +29,7 @@ struct Constants {
     static let DEFAULT_WEDDING_ID = "9999"
     static let GROOM_SUBFOLDER = "groom"
     static let BRIDE_SUBFOLDER = "bride"
+    static let GALLERY_SUBFOLDER = "gallery"
     static let DEFAULT_IMAGE_URL = ""
     
     struct TestUser {
