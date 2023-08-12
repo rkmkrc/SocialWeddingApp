@@ -9,11 +9,13 @@ import SwiftUI
 
 struct Photo: Identifiable {
     let id = UUID()
-    let name: String
+    let photo: UIImage
 }
 
 struct GalleryPage: View {
-    let photos: [Photo] = Constants.album
+    @ObservedObject var model: ViewModel
+    @State var galleryUrls: [String] = []
+    @State var photos: [Photo] = []
     let gridItems = [
         GridItem(.flexible()),
         GridItem(.flexible()),
@@ -29,7 +31,7 @@ struct GalleryPage: View {
                     LazyVGrid(columns: gridItems, spacing: 10) {
                         ForEach(photos) { photo in
                             GeometryReader { geometry in
-                                Image(photo.name)
+                                Image(uiImage: photo.photo)
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
                                     .frame(width: geometry.size.width, height: geometry.size.width * 1)
@@ -53,6 +55,16 @@ struct GalleryPage: View {
         .padding(.top, Constants.TOP_PADDING)
         .fullScreenCover(item: $selectedPhoto) { photo in
             GalleryFullScreenView(photo: photo, isPresented: $selectedPhoto)
+        }.onAppear() {
+            if photos.isEmpty {
+                self.model.retrieveGallery() { uiImages in
+                    // Transform UIImage? array to Photo array
+                    let photoArray = uiImages.map { uiImage in
+                        Photo(photo: uiImage ?? UIImage())
+                    }
+                    self.photos = photoArray
+                }
+            }
         }
     }
 }
@@ -67,7 +79,7 @@ struct GalleryFullScreenView: View {
         GeometryReader { geometry in
             VStack {
                 Spacer()
-                Image(photo.name)
+                Image(uiImage: photo.photo)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(height: geometry.size.height * 0.8)
@@ -108,9 +120,10 @@ struct GalleryFullScreenView: View {
         static let inactive = DragState()
     }
 }
-
+/*
 struct GalleryPage_Previews: PreviewProvider {
     static var previews: some View {
         GalleryPage()
     }
 }
+*/

@@ -19,6 +19,7 @@ struct Constants {
     static let USERS_COLLECTION = "Users"
     static let USED_IDS_COLLECTION = "UsedIDs"
     static let WEDDINGS_COLLECTION = "Weddings"
+    static let GALLERY_COLLECTION = "Gallery"
     static let DEFAULT_TITLE = "DefaultTitle"
     static let DEFAULT_DATE = "00.00.0000"
     static let DEFAULT_NAME = "DefaultName"
@@ -42,6 +43,7 @@ struct Constants {
         static let passwordShouldBe = "Password should be at least 6 characters long."
         static let passwordsNotMatched = "Passwords do not match."
     }
+    /*
     static let album: [Photo] = {
         var photos: [Photo] = []
         for i in 1...10 {
@@ -49,5 +51,5 @@ struct Constants {
         }
         return photos.shuffled()
     }()
-    
+    */
 }

@@ -16,26 +16,30 @@ enum WeddingError: Error {
     case urlError(String)
     case dataToImageError(String)
     case generatingIDError(String)
+    case galleryUrlError(String)
 }
 
 func processWeddingError(error: WeddingError) {
     switch error {
-       case .invalidData:
-           print("Invalid data received.")
-       case .networkError(let message):
-           print("Network error occurred: \(message)")
-       case .firestoreError(let message):
-           print("Firestore error occurred: \(message)")
-       case .documentError(let message):
-           print("Document error occurred: \(message)")
-       case .imageGettingError(let message):
-          print("Error while getting url of image: \(message)")
-       case .urlError(let message):
-          print("URL Error: \(message)")
-       case .dataToImageError(let message):
-          print("Error while converting data to image: \(message)")
-       case .generatingIDError(let message):
-          print("Error generating unique ID: \(message)")
+    case .invalidData:
+        print("Invalid data received.")
+    case .networkError(let message):
+        print("Network error occurred: \(message)")
+    case .firestoreError(let message):
+        print("Firestore error occurred: \(message)")
+    case .documentError(let message):
+        print("Document error occurred: \(message)")
+    case .imageGettingError(let message):
+        print("Error while getting url of image: \(message)")
+    case .urlError(let message):
+        print("URL Error: \(message)")
+    case .dataToImageError(let message):
+        print("Error while converting data to image: \(message)")
+    case .generatingIDError(let message):
+        print("Error generating unique ID: \(message)")
+    case .galleryUrlError(let message):
+        print("Error getting gallery urls: \(message)")
+        
     }
 }
-  
+

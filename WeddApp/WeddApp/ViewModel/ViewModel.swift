@@ -19,7 +19,7 @@ class ViewModel: ObservableObject {
         self.id = id
     }
     
-    func getImageUrlOf(person: String, completion: @escaping (String?, Error?) -> Void) {
+    func getImageOf(person: String, completion: @escaping (UIImage?, Error?) -> Void) {
         let docRef = db.collection(Constants.IMAGES_COLLECTION).document(id)
         docRef.getDocument { (document, error) in
             if let error = error {
@@ -29,13 +29,69 @@ class ViewModel: ObservableObject {
             }
             if let document = document, document.exists {
                 let imageUrl = document["\(person)Url"] as? String ?? Constants.DEFAULT_IMAGE_URL
-                completion(imageUrl, nil)
+                retrieveImage(withURL: imageUrl, completion: { image in
+                    if let image = image {
+                        completion(image,nil)
+                    }
+                })
             } else {
-                completion(Constants.DEFAULT_IMAGE_URL, nil)
+                completion(nil,error)
             }
         }
     }
     
+    func getGalleryUrls(completion: @escaping ([String], Error?) -> Void) {
+        let docRef = db.collection(Constants.GALLERY_COLLECTION).document(id)
+        docRef.getDocument { (document, error) in
+            if let error = error {
+                processWeddingError(error: .documentError(error.localizedDescription))
+                completion([], error)
+                return
+            }
+            if let document = document, document.exists {
+                var urls: [String] = []
+                
+                if let data = document.data() {
+                    for (key, value) in data {
+                        if let keyString = key as? String, keyString.hasPrefix("photo"), let imageUrl = value as? String {
+                            urls.append(imageUrl)
+                        }
+                    }
+                }
+                completion(urls, nil)
+            } else {
+                completion([], nil)
+            }
+        }
+    }
+    
+    func retrieveGallery(completion: @escaping ([UIImage?]) -> Void) {
+        getGalleryUrls { urlArray, error in
+            if let error = error {
+                processWeddingError(error: WeddingError.galleryUrlError(error.localizedDescription))
+            } else {
+                var galleryPhotos: [UIImage?] = []
+                let dispatchGroup = DispatchGroup() // Use dispatch group for synchronization
+                
+                for url in urlArray {
+                    dispatchGroup.enter() // Enter the dispatch group
+                    
+                    retrieveImage(withURL: url) { image in
+                        galleryPhotos.append(image)
+                        dispatchGroup.leave() // Leave the dispatch group when image is retrieved
+                    }
+                }
+                dispatchGroup.notify(queue: .main) {
+                    DispatchQueue.main.async {
+                        completion(galleryPhotos) // Call the completion block once all images are retrieved
+                    }
+                }
+            }
+        }
+    }
+
+
+
     // Fetching wedding from Firebase
     func getWedding() {
         let docRef = db.collection(Constants.WEDDINGS_COLLECTION).document(id)

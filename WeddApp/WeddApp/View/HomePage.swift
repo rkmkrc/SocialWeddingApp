@@ -19,7 +19,7 @@ struct HomePage: View {
         } else {
             TabView {
                 IntroductionPage(model: model)
-                GalleryPage()
+                GalleryPage(model: model)
                 StoryPage()
             }
             .tabViewStyle(PageTabViewStyle())
