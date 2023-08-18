@@ -30,6 +30,7 @@ extension Binding where Value == String {
 struct SuccessOperations {
     static let DOC_SET = "Wedding document successfully set!"
     static let USER_CREATED = "User created successfully!"
+    static let WISH_CREATED = "Wish created successfully!"
     static let SIGNED_IN = "Signed In"
     static let SIGNED_UP = "Signed Up"
     static let IMAGE_FETCHED = "Image fetched successfully."

@@ -13,7 +13,7 @@ struct OTPPage: View {
     @State private var pin: String = "0"
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             GeometryReader { geometry in
                 VStack {
                     Image("appLogo")

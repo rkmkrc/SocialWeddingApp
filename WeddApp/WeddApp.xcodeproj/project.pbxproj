@@ -40,6 +40,7 @@
 		7D30560E2A5AD8FD00AA761B /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D30560D2A5AD8FD00AA761B /* HomePage.swift */; };
 		7D41A31E2A795407002A6EEB /* AuthScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D41A31D2A795407002A6EEB /* AuthScreen.swift */; };
 		7D4CD60A2A6BF23D00A390A1 /* PinKeyboardAndField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4CD6092A6BF23D00A390A1 /* PinKeyboardAndField.swift */; };
+		7D8A44D02A8E2E1E00BFC35F /* WishPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8A44CF2A8E2E1E00BFC35F /* WishPage.swift */; };
 		7D90F8522A66D248006A6FF6 /* StoryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D90F8512A66D248006A6FF6 /* StoryPage.swift */; };
 		7D90F8552A672916006A6FF6 /* MessageCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D90F8542A672916006A6FF6 /* MessageCard.swift */; };
 		7D90F8572A67292D006A6FF6 /* StoryCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D90F8562A67292D006A6FF6 /* StoryCircle.swift */; };
@@ -111,6 +112,7 @@
 		7D30560D2A5AD8FD00AA761B /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
 		7D41A31D2A795407002A6EEB /* AuthScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthScreen.swift; sourceTree = "<group>"; };
 		7D4CD6092A6BF23D00A390A1 /* PinKeyboardAndField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinKeyboardAndField.swift; sourceTree = "<group>"; };
+		7D8A44CF2A8E2E1E00BFC35F /* WishPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishPage.swift; sourceTree = "<group>"; };
 		7D90F8512A66D248006A6FF6 /* StoryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryPage.swift; sourceTree = "<group>"; };
 		7D90F8542A672916006A6FF6 /* MessageCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCard.swift; sourceTree = "<group>"; };
 		7D90F8562A67292D006A6FF6 /* StoryCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCircle.swift; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 				7D3056092A5AD2A700AA761B /* GalleryPage.swift */,
 				7D90F8512A66D248006A6FF6 /* StoryPage.swift */,
 				7DEAAF232A6E938A00EB3F00 /* TestScreen.swift */,
+				7D8A44CF2A8E2E1E00BFC35F /* WishPage.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -624,6 +627,7 @@
 				7D3056022A59BF2300AA761B /* TestModels.swift in Sources */,
 				7D3056072A59C0C600AA761B /* Constants.swift in Sources */,
 				7D0465A42A7684A200F45C20 /* FormViewModel.swift in Sources */,
+				7D8A44D02A8E2E1E00BFC35F /* WishPage.swift in Sources */,
 				7D0465A82A77C9B900F45C20 /* ImagePicker.swift in Sources */,
 				7DAAEA262A6AF558006F801C /* OtpScreen.swift in Sources */,
 				7DFA37B82A6D61C20056C490 /* User.swift in Sources */,

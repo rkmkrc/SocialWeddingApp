@@ -17,6 +17,7 @@ enum WeddingError: Error {
     case dataToImageError(String)
     case generatingIDError(String)
     case galleryUrlError(String)
+    case gettingWishesError(String)
 }
 
 func processWeddingError(error: WeddingError) {
@@ -39,7 +40,8 @@ func processWeddingError(error: WeddingError) {
         print("Error generating unique ID: \(message)")
     case .galleryUrlError(let message):
         print("Error getting gallery urls: \(message)")
-        
+    case .gettingWishesError(let message):
+        print("Error getting wishes: \(message)")
     }
 }
 

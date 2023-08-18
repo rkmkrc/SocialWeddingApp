@@ -89,9 +89,7 @@ class ViewModel: ObservableObject {
             }
         }
     }
-
-
-
+    
     // Fetching wedding from Firebase
     func getWedding() {
         let docRef = db.collection(Constants.WEDDINGS_COLLECTION).document(id)
@@ -135,7 +133,6 @@ class ViewModel: ObservableObject {
     func uploadWedding(groom: Groom, bride: Bride, wedding: Wedding) {
         let weddingData = wedding.toDictionary()
         
-        // Use the user's UID as the document ID for the wedding
         if let id = wedding.id {
             db.collection(Constants.WEDDINGS_COLLECTION).document(id).setData(weddingData) { error in
                 if let error = error {
@@ -189,4 +186,43 @@ class ViewModel: ObservableObject {
             }
         }
     }
+    
+    func uploadWish(wish: Wish) {
+        let db = Firestore.firestore()
+        let guestsCollection = db.collection(Constants.GUESTS_COLLECTION).document(id).collection(Constants.GUESTS_COLLECTION)
+        let newGuestDocument = guestsCollection.document()
+        let guestID = newGuestDocument.documentID
+        UserDefaults.standard.set(guestID, forKey: "guestID-\(id)")
+        
+        newGuestDocument.setData(wish.toDictionary()) { error in
+            if let error = error {
+                // handle pop up
+                processWeddingError(error: WeddingError.firestoreError(error.localizedDescription))
+            } else {
+                SuccessOperations.onSuccess(message: SuccessOperations.WISH_CREATED)
+                print(guestID)
+            }
+        }
+        
+    }
+    
+    func getWishes(completion: @escaping ([Wish], Error?) -> Void) {
+        let guestsCollection = db.collection(Constants.GUESTS_COLLECTION).document(id).collection(Constants.GUESTS_COLLECTION)
+        
+        guestsCollection.getDocuments { snapshot, error in
+            if let error = error {
+                completion([], error)
+                return
+            }
+            
+            var wishes: [Wish] = []
+            for document in snapshot?.documents ?? [] {
+                if let wish = Wish(document: document) {
+                    wishes.append(wish)
+                }
+            }
+            completion(wishes, nil)
+        }
+    }
 }
+

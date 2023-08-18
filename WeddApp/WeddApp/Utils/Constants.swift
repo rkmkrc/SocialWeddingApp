@@ -20,6 +20,7 @@ struct Constants {
     static let USED_IDS_COLLECTION = "UsedIDs"
     static let WEDDINGS_COLLECTION = "Weddings"
     static let GALLERY_COLLECTION = "Gallery"
+    static let GUESTS_COLLECTION = "Guests"
     static let DEFAULT_TITLE = "DefaultTitle"
     static let DEFAULT_DATE = "00.00.0000"
     static let DEFAULT_NAME = "DefaultName"

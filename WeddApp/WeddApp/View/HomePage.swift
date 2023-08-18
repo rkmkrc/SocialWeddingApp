@@ -10,22 +10,27 @@ import SwiftUI
 
 struct HomePage: View {
     @ObservedObject var model: ViewModel
+    @State private var addWishButtonTapped: Bool = false
     var pin: String
     
     var body: some View {
-        if model.wed == nil {
-            ProgressView("Loading...")
-                .progressViewStyle(CircularProgressViewStyle())
-        } else {
-            TabView {
-                IntroductionPage(model: model)
-                GalleryPage(model: model)
-                StoryPage()
+        NavigationStack {
+            if model.wed == nil {
+                ProgressView("Loading...")
+                    .progressViewStyle(CircularProgressViewStyle())
+            } else {
+                TabView {
+                    IntroductionPage(model: model)
+                    GalleryPage(model: model)
+                    StoryPage(model: model, addWishButtonTapped: $addWishButtonTapped)
+                    
+                }
+                .tabViewStyle(PageTabViewStyle())
+                .navigationBarBackButtonHidden()
+                .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .interactive))
+                .edgesIgnoringSafeArea(.all)
             }
-            .tabViewStyle(PageTabViewStyle())
-            .navigationBarBackButtonHidden(true)
-            .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .interactive))
-            .edgesIgnoringSafeArea(.all)
+            NavigationLink(destination: WishPage(model: model, addWishButtonTapped: $addWishButtonTapped), isActive: $addWishButtonTapped) { EmptyView() }
         }
     }
     

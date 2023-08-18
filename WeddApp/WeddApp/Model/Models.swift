@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 struct Bride: Codable {
     var name: String?
@@ -53,6 +54,41 @@ struct Wedding: Codable, Identifiable {
             "date": date ?? Constants.DEFAULT_DATE,
             "location": location ?? Constants.DEFAULT_LOCATION,
             "welcomeMessage": welcomeMessage ?? Constants.DEFAULT_WELCOME_MESSAGE
+        ]
+    }
+}
+
+struct Wish: Identifiable {
+    let id = UUID()
+    let guestName: String
+    let wish: String
+    let date: String
+    
+    init(guestName: String, wish: String, date: Date) {
+        self.guestName = guestName
+        self.wish = wish
+        self.date = formatDateToString(date: date)
+    }
+    
+    init?(document: QueryDocumentSnapshot) {
+        guard
+            let guestName = document.data()["guestName"] as? String,
+            let wish = document.data()["wish"] as? String,
+            let date = document.data()["date"] as? String
+        else {
+            return nil
+        }
+        
+        self.guestName = guestName
+        self.wish = wish
+        self.date = date
+    }
+    
+    func toDictionary() -> [String: Any] {
+        return [
+            "guestName": guestName,
+            "wish": wish,
+            "date": date,
         ]
     }
 }
